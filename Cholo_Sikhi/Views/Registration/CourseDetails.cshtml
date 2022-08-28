@@ -1,0 +1,338 @@
+﻿@model IEnumerable<Cholo_Sikhi.Models.Multiple>
+
+@{
+    ViewBag.Title = "CourseDetails";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/css/homee.css">
+    <title>CourseDetails</title>
+</head>
+<body>
+
+    @{ int price = 0;}
+    <div class="details-body">
+
+        <div class="details-body-container">
+            @foreach (var dis in Model.Take(1))
+            {
+                <div class="course-data">
+                    <div class="catagory">
+
+                        <h5>@dis.coursedetails.catagory</h5>
+                    </div>
+                    <div class="description">
+                        <h2>@dis.coursedetails.tittle</h2>
+                        <p>
+                            @dis.coursedetails.c_description
+                        </p>
+                        <button class="button-26" role="button">Buy Now</button>
+                    </div>
+                    <div class="info">
+                        <p>Created by <a href="">@dis.coursedetails</a> </p>
+                        <p>Last Updated 10/2020</p>
+                    </div>
+                </div>
+                <div class="img-box">
+                    <img src="@dis.coursedetails.c_img" alt="">
+                </div>
+            }
+        </div>
+    </div>
+
+    @{ string description = "", checkdot = "";}
+    @{ int quiz = 0, video = 0;}
+    @{ List<int> firstlist = new List<int>(); List<int> secondlist = new List<int>();}
+    @foreach (var countcontent in Model)
+    {
+        if (countcontent.content.content_type.ToString() == "play" && secondlist.Contains(Convert.ToInt32(countcontent.content.subsec_id)) == false)
+        {
+            video++;
+            secondlist.Add(countcontent.content.subsec_id);
+        }
+    }
+
+    <div class="learn2-box">
+        <h1>$19.99</h1>
+        <button class="button-66" role="button">Buy Now</button>
+        <p>30-Day Money-Back Guarantee</p>
+        <div class="lessons1">
+            <ul class="b">
+                <h5>This course includes:</h5>
+                <li><span>&#10003;</span>@video on-demand video</li>
+                <li><span>&#10003;</span>1 article</li>
+                <li><span>&#10003;</span>1 downloadable resource</li>
+                <li><span>&#10003;</span>6 coding exercises</li>
+                <li><span>&#10003;</span>Full lifetime access</li>
+                <li><span>&#10003;</span>Access on mobile and TV</li>
+                <li><span>&#10003;</span>Certificate of completion</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="course-data2">
+        <div class="learn-box">
+            <div class="lessons">
+                <h2 id="leftside">What you'll learn</h2>
+                @foreach (var descriptionlearn in Model.Take(1))
+                {
+                    description = @descriptionlearn.coursedetails.learn_des.ToString();
+                    <ul class="a">
+                        @foreach (char h in description)
+                        {
+                            if (h == '.')
+                            {
+                                <div>
+                                <li><span>&#10003;</span>@checkdot</li>
+                        </div>
+                        checkdot = " ";
+                    }
+                    else
+                    {
+                        checkdot += h;
+                    }
+                }
+                        </ul>
+                    }
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+        <div class="contentt">
+            <div class="lessons">
+                <h2>Course content</h2>
+            </div>
+            <!--Beggining of collapse-->
+            @{ int c = 0; }
+            @{ string tittle = "", videourl = "";}
+
+
+            <div id="accordion">
+
+
+                @foreach (var s in Model)
+                {
+                    var sModalURL = "#myModal";
+                    var sModalId = "myModal";
+
+                    <div>
+
+                        @if (c != Convert.ToInt32(s.sectiondetails.s_id))
+                        {
+                            c = Convert.ToInt32(s.sectiondetails.s_id);
+                            <div class="card">
+                                <div class="card-header collapsible" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <h5 class="mb-0">
+                                        <h5>
+                                            @s.sectiondetails.tittle
+                                        </h5>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse content" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+
+                                        <ul>
+                                            @foreach (var d in Model)
+                                            {
+                                                if (Convert.ToInt32(d.content.s_id) == c && firstlist.Contains(Convert.ToInt32(d.content.subsec_id)) == false)
+                                                {
+                                                    firstlist.Add(Convert.ToInt32(d.content.subsec_id));
+                                                    sModalURL += d.content.subsec_id;
+                                                    sModalId += d.content.subsec_id;
+                                                    tittle = Convert.ToString(d.content.subsec_tittle);
+                                                    videourl = Convert.ToString(d.content.content_link);
+
+                                                    <li><span><i class="fa fa-play-circle" style="font-size:16px;color:rgb(0, 0, 0)"></i></span><a href="" id="myBtn" data-toggle="modal" data-target="@sModalURL">@d.content.subsec_tittle</a></li>
+                                                }
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="@sModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">   @tittle </h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <iframe width="100%" height="335" class="yt_player_iframe" src=@videourl title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <!--MODAL PART-->
+                                            }
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                            </div> <!--end of card-->
+                        }
+
+                    </div> <!--div-->
+
+                }
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="course-data2">
+            <div class="learn-box">
+                <div class="lessons">
+                    <h2>User Rating</h2>
+                    <span class="heading">User Rating</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <p>4.1 average based on 254 reviews.</p>
+                    <hr style="border:3px solid #f1f1f1">
+
+                    <div class="row">
+                        <div class="side">
+                            <div>5 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-5"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>150</div>
+                        </div>
+                        <div class="side">
+                            <div>4 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-4"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>63</div>
+                        </div>
+                        <div class="side">
+                            <div>3 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-3"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>15</div>
+                        </div>
+                        <div class="side">
+                            <div>2 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-2"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>6</div>
+                        </div>
+                        <div class="side">
+                            <div>1 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-1"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>20</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $('#exampleModalCenter').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".close").click(function () {
+                    $('.yt_player_iframe').each(function () {
+                        var el_src = $(this).attr("src");
+                        $(this).attr("src", el_src);
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(window).scroll(function (e) {
+                var $el = $('.learn2-box');
+                var isPositionFixed = ($el.css('position') == 'fixed');
+                if ($(this).scrollTop() > 200 && !isPositionFixed) {
+                    $el.css({ 'position': 'fixed', 'top': '10px', 'margin-right': '0px' });
+                }
+                if ($(this).scrollTop() < 200 && isPositionFixed) {
+                    $el.css({ 'position': 'static', 'top': '10px', 'margin-right': '50px' });
+                }
+            });
+
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+
+
+
+    </body>
+</html>

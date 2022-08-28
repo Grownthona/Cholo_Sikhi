@@ -1,0 +1,597 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+body {
+    padding:0;
+    margin:0;
+
+}
+
+
+.home {
+    margin-top: 5rem;
+}
+
+button {
+    margin-bottom: 1rem;
+}
+
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    padding: 4%;
+}
+
+.box-1 {
+    width: 500px;
+}
+
+    .box-1 h1 {
+        font-family: 'Lora', serif;
+        font-size: 50px;
+    }
+
+    .box-1 p {
+        font-family: 'Lora', serif;
+        font-size: 15px;
+        color: gray;
+        line-height: 5vh;
+    }
+
+
+.box-2 {
+    width: 500px;
+}
+
+    .box-2 img {
+        width: 100%;
+        height: 100%;
+    }
+
+@media only screen and (max-width: 600px) {
+    .box-1 h1 {
+        font-size: 30px;
+    }
+}
+
+.cardd{
+    width: 200px;
+    height:350px;
+}
+.cardd__img{
+    width:200px;
+    height:200px;
+}
+
+.cardd__img img{
+    width : 100%;
+}
+.check{
+    border:1px solid red;
+}
+.cardd__content {
+    width: 100%;
+}
+.services {
+    text-align: center;
+    margin-top: 9rem;
+    margin-bottom: 6rem;
+}
+
+    .services h2 {
+        font-family: 'Lora', serif;
+        font-size: 40px;
+        margin-bottom: 8rem;
+    }
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.service-box {
+    width: 300px;
+}
+
+    .service-box h3 {
+        font-family: 'Lora', serif;
+        margin-bottom: 2rem;
+    }
+
+    .service-box p {
+        font-family: 'Lora', serif;
+        color: gray;
+        font-size: 14px;
+        line-height: 4vh;
+    }
+
+    .service-box img {
+        width: 35%;
+    }
+    @media only screen and (max-width: 600px) {
+        .services h2 {
+            font-size: 25px;
+        }
+    }
+
+
+
+.success-story {
+    background: linear-gradient(to top, rgb(83, 83, 83) 15%, rgb(0, 0, 0) 75%);
+    text-align: center;
+    color: white;
+    padding: 3rem;
+}
+
+#description {
+    font-family: 'Jost', sans-serif;
+}
+
+#successp {
+    color: blue;
+    font-size: 15px;
+    font-family: 'Jost', sans-serif;
+}
+
+.success-story h3 {
+    font-size: 40px;
+    font-family: 'Jost', sans-serif;
+}
+
+.success-story-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.success-image-box {
+    width: 800px;
+}
+
+    .success-image-box img {
+        width: 100%;
+    }
+
+.success-line-box {
+    width: 450px;
+    position: relative;
+    left: -200px;
+    text-align: end;
+}
+
+    .success-line-box p {
+        font-family: 'Jost', sans-serif;
+        line-height: 5vh;
+        font-size: 18px;
+    }
+
+@media only screen and (max-width: 1280px) {
+    .success-line-box {
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .success-line-box {
+        left: 0;
+    }
+
+        .success-line-box p {
+            line-height: 3vh;
+            font-size: 15px;
+        }
+}
+
+
+
+
+/*Button*/
+/*Button*/
+.button-26 {
+    appearance: button;
+    background-color: #7541d6;
+    border: 1px solid #773de2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Graphik,-apple-system,system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-size: 14px;
+    line-height: 1.15;
+    overflow: visible;
+    padding: 12px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all 80ms ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+}
+
+    .button-26:disabled {
+        opacity: .5;
+    }
+
+    .button-26:focus {
+        outline: 0;
+    }
+
+    .button-26:hover {
+        background-color: #9b88bd;
+        border-color: #8e70c4;
+    }
+
+
+    .button-26:active {
+        background-color: #9e89c5;
+        border-color: #9e89c5;
+    }
+
+/*Button*/
+
+/* CSS */
+.button-66 {
+    background-color: #6058db;
+    border-radius: 4px;
+    border: 0;
+    box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inherit;
+    font-family: "Space Grotesk",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    min-height: 56px;
+    width: 100%;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+    .button-66:hover {
+        background-color: #065dd8;
+        transform: translateY(-2px);
+    }
+
+@media (min-width: 768px) {
+    .button-66 {
+        padding: 16px 44px;
+        min-width: 150px;
+    }
+}
+
+/*CSS */
+
+.details-body {
+    background-color: black;
+    width: 100%;
+}
+
+.course-data {
+    width: 500px;
+    padding-top: 4%;
+    padding-bottom: 3%;
+}
+
+.details-body .catagory {
+    color: rgb(204, 200, 241);
+    font-size: 19px;
+    margin-bottom: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.details-body .description h2 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    line-height: 8vh;
+    font-size: 40px;
+}
+
+.details-body .description p {
+    color: white;
+    font-family: 'Jost', sans-serif;
+    line-height: 5vh;
+}
+
+.course-data .info {
+    color: aliceblue;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+}
+
+    .course-data .info p {
+        margin-bottom: 1rem;
+    }
+
+.course-data2 .course-img-box img {
+    width: 100%;
+}
+
+.course-data2 .amount-part {
+    padding: 2rem;
+}
+
+.details-body-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+}
+
+    .details-body-container .img-box {
+        width: 350px;
+    }
+
+.img-box img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1280px) {
+    .details-body .description h2 {
+        font-size: 30px;
+    }
+}
+
+
+
+.course-data2 {
+    left: 70px;
+    position: relative;
+    top: 50px;
+}
+
+.learn-box {
+    width: 815px;
+    padding: 20px;
+}
+
+#leftside {
+    margin-bottom: 2rem;
+    margin-left: 20px;
+}
+
+.learn-box h2 {
+    font-size: 30px;
+}
+
+.learn2-box {
+    padding: 1rem;
+    width: 350px;
+    text-align: center;
+    background-color: #fff;
+    float: right;
+    position: -webkit-sticky;
+    position: fixed;
+    z-index: 100;
+    margin-top: 50px;
+    right: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+    .learn2-box p {
+        color: gray;
+        font-size: 14px;
+        margin-top: 1rem;
+        font-family: 'Jost', sans-serif;
+    }
+
+.b h5 {
+    text-align: start;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lessons h5 {
+    text-align: start;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.lessons p {
+    color: rgb(85, 85, 85);
+    font-size: 15px;
+    margin-top: 1rem;
+    line-height: 4vh;
+    font-weight: lighter;
+    font-family: 'Jost', sans-serif;
+}
+
+span {
+    content: "\2713";
+    padding: 1rem;
+    height: auto;
+    color: blueviolet;
+}
+
+ul li {
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: lighter;
+    text-align: start;
+    font-size: 15px;
+    display: flex;
+    width: 350px;
+    align-items: center;
+    height: auto;
+    letter-spacing: normal;
+    white-space: normal;
+    color: rgb(99, 99, 99);
+}
+
+.a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contentt {
+    margin-top: 4rem;
+    margin-left: 6rem;
+    width: 800px;
+}
+
+    .contentt h2 {
+        margin-bottom: 2rem;
+    }
+
+    .contentt h5 {
+        font-size: 18px;
+    }
+
+.card-body ul li a {
+    color: #5a29b4;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+
+
+@media only screen and (max-width: 1280px) {
+    .learn2-box {
+        display: none;
+    }
+
+    .learn-box {
+        width: 250px;
+    }
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+}
+
+.middle {
+    margin-top: 10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {
+    width: 60%;
+    height: 18px;
+    background-color: #04AA6D;
+}
+
+.bar-4 {
+    width: 30%;
+    height: 18px;
+    background-color: #2196F3;
+}
+
+.bar-3 {
+    width: 10%;
+    height: 18px;
+    background-color: #00bcd4;
+}
+
+.bar-2 {
+    width: 4%;
+    height: 18px;
+    background-color: #ff9800;
+}
+
+.bar-1 {
+    width: 15%;
+    height: 18px;
+    background-color: #f44336;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+
+    .right {
+        display: none;
+    }
+}
+
+.button {
+    position: relative;
+    display: table;
+    padding: 0.75rem;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+    .button:hover {
+        background: lighten(#222, 5%);
+    }
+
+.couse-container{
+    display:flex;
+    flex-wrap : wrap;
+    justify-content:center;
+    align-items:center;
+}
+
+.course {
+    width: 1000px;
+    float: right;
+    padding: 20px;
+}
+.wrapper {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+

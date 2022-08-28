@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2EDD04AB-8BB9-4D43-AC78-6DB82577BF65}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cholo_Sikhi</RootNamespace>
+    <AssemblyName>Cholo_Sikhi</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44377</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cours.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Multiple.cs" />
+    <Compile Include="Models\Section.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SectionContent.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sections.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sections.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sections.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sections.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sections.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userinfo.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap\mixins\_badge.css" />
+    <Content Include="Content\css\bootstrap\mixins\_box-shadow.css" />
+    <Content Include="Content\css\bootstrap\mixins\_float.css" />
+    <Content Include="Content\css\bootstrap\mixins\_nav-divider.css" />
+    <Content Include="Content\css\bootstrap\mixins\_reset-text.css" />
+    <Content Include="Content\css\bootstrap\mixins\_text-hide.css" />
+    <Content Include="Content\css\bootstrap\mixins\_transition.css" />
+    <Content Include="Content\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Content\css\bootstrap\_media.css" />
+    <Content Include="Content\css\homee.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Content\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Content\fonts\icomoon\demo.html" />
+    <Content Include="Content\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\fonts\icomoon\Read Me.txt" />
+    <Content Include="Content\fonts\icomoon\style.css" />
+    <Content Include="Content\images\hero_1.jpg" />
+    <Content Include="Content\images\hero_3.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\00446cee739f301a8df7247358fd87ae.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\148cac9637146c1d39f01e78a0909ce3.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\3e34873c939ab5836defe4c4d2c03c54.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\59a93f4343681dc67c59137e470694fb.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\788887fda79441cf8f0c8e257829f024%281%29.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\788887fda79441cf8f0c8e257829f024.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\anchor.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\audio-devices.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\c089846e4515058cd25d8fd507197303.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\ct.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\da91487c527e34dd8e16e057bd73ac8c.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\e368d0ab4fc405d90796b9b6bfa8a622.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\ee75e2ebdd003aa4d608b549fc360516.jpg" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\PinSaveButtonCommon-415b2f5366b440f1.css" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\saved_resource%281%29.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\saved_resource.html" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\styles__ltr.css" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\[id]-authdesktop-62bbd4d7c8e22f17.css" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\_client-authdesktop-bedc82b2ce95fba2.css" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\148cac9637146c1d39f01e78a0909ce3.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\44c2d6ae8b1e573fc30e71f7aebf5d81%281%29.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\44c2d6ae8b1e573fc30e71f7aebf5d81.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\6d2ca48925edbc6be4d7109f1915033c.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\842087dfe91f8c10e5f008734445dc52.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\9abbf0b46de84f15b2be9bbf46ef366a.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\anchor.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\audio-devices.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\c294b71b639cd83ba7a6356dfe095dbb.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\c3e7eb5434769bed68acc808b73849c1.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\ct.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\e50fc562c8327cf5412b5efd430d53a5.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\ef7c9072cbc29ee62fe94f78c0002153.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\f98349dbebaf1d050bd677751b6c0063.jpg" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\PinSaveButtonCommon-415b2f5366b440f1.css" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\saved_resource%281%29.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\saved_resource.html" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\styles__ltr.css" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\[id]-authdesktop-62bbd4d7c8e22f17.css" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\_client-authdesktop-bedc82b2ce95fba2.css" />
+    <Content Include="Content\images\pics\06904bedbacc2a2ffab9600b919353f3.jpg" />
+    <Content Include="Content\images\pics\0969268327f36c633164d8da6f540f09.jpg" />
+    <Content Include="Content\images\pics\1023f46208e5b10fb5870e1a135dca03.jpg" />
+    <Content Include="Content\images\pics\184969856e8e1cc3b76e79e254c69fea.jpg" />
+    <Content Include="Content\images\pics\2bc84a2b6a00d5ef3c9b53b7644659ff.jpg" />
+    <Content Include="Content\images\pics\3a242b13a64a4bd9a169a26b8db28b9c.jpg" />
+    <Content Include="Content\images\pics\3d23714f1d9eceb30d4ebf48b6b17027.jpg" />
+    <Content Include="Content\images\pics\3dc4e18ac61903e10e481bee4c654283.jpg" />
+    <Content Include="Content\images\pics\43a0d179409167.5cc1e7358fb79.gif" />
+    <Content Include="Content\images\pics\45a6ae5b82ace5d7e647f3770d80d434.jpg" />
+    <Content Include="Content\images\pics\45e748f0cbbdc890f0c5ad81d310febc.jpg" />
+    <Content Include="Content\images\pics\4e17ce523ef87a742add252db6e9da81.jpg" />
+    <Content Include="Content\images\pics\50f509202b40a28d95b9d5eeea6152dc.jpg" />
+    <Content Include="Content\images\pics\510773b34ed92bd46622dd4d8c194ae6.jpg" />
+    <Content Include="Content\images\pics\521b2c15881be91cc996867c3411920c.jpg" />
+    <Content Include="Content\images\pics\56a2db68f476fee60dc606b57463b081.jpg" />
+    <Content Include="Content\images\pics\5da96a792b687a65008395598b21e998.jpg" />
+    <Content Include="Content\images\pics\62849995361ebb3b22006c3649be07f5.jpg" />
+    <Content Include="Content\images\pics\7412604b134dc78d0810b17fb8ab7481.jpg" />
+    <Content Include="Content\images\pics\7dbb5bb0a0d340a4137a2116ee90dcba.jpg" />
+    <Content Include="Content\images\pics\8192617ed9c2675c350a1caa9063389d.jpg" />
+    <Content Include="Content\images\pics\878235a428a6509069feb79171070194.jpg" />
+    <Content Include="Content\images\pics\8ba05aa643eefbd80399736b540849ee.jpg" />
+    <Content Include="Content\images\pics\8d6ab3f8f7ecc613662541c2e7af6a6a.jpg" />
+    <Content Include="Content\images\pics\905375536446aea93f9897d4afe78615.jpg" />
+    <Content Include="Content\images\pics\91e8208b0949722e3a26f7d38024a828.jpg" />
+    <Content Include="Content\images\pics\a66b6f8eab8888f6e5049963d492db97.jpg" />
+    <Content Include="Content\images\pics\aa79fd0ac6087d408abd7034b16093f2.jpg" />
+    <Content Include="Content\images\pics\b05a9be161cb20cb7445ea99191161ff.jpg" />
+    <Content Include="Content\images\pics\b67a1a7225539923840cc698dcceb169.jpg" />
+    <Content Include="Content\images\pics\bae17342dcfa22a68d148c2aa5954bd2.jpg" />
+    <Content Include="Content\images\pics\cb214124ae8a83c0b4a6ddfa0e853d87.jpg" />
+    <Content Include="Content\images\pics\cee76880e17a943ea9e3313fd4eb0cde.jpg" />
+    <Content Include="Content\images\pics\e64acfbdbfe86f7ebbb18043554ec17c.jpg" />
+    <Content Include="Content\images\pics\ef927f43a5c9daee9a6cc50a0636a50a %281%29.jpg" />
+    <Content Include="Content\images\pics\ef927f43a5c9daee9a6cc50a0636a50a.jpg" />
+    <Content Include="Content\images\pics\f463e35f1bde10f218b2c7287e79bc10.jpg" />
+    <Content Include="Content\images\pics\fc060f61857c46228ac425977b81a7e2.jpg" />
+    <Content Include="Content\images\pics\kkk.html" />
+    <Content Include="Content\images\pics\kkk_files\04dab650f593477efacf8a47b884bd42%281%29.jpg" />
+    <Content Include="Content\images\pics\kkk_files\04dab650f593477efacf8a47b884bd42.jpg" />
+    <Content Include="Content\images\pics\kkk_files\148cac9637146c1d39f01e78a0909ce3.jpg" />
+    <Content Include="Content\images\pics\kkk_files\45a6ae5b82ace5d7e647f3770d80d434.jpg" />
+    <Content Include="Content\images\pics\kkk_files\55210405f0e104e441ab78cbad85da61.jpg" />
+    <Content Include="Content\images\pics\kkk_files\62dcbc19adef59cde17c6fc2a7a70cdb.jpg" />
+    <Content Include="Content\images\pics\kkk_files\a5f548f2e011cc5f0a1782ac1c080e92.jpg" />
+    <Content Include="Content\images\pics\kkk_files\aca8d2c37897131ae8771ee9cf842950.jpg" />
+    <Content Include="Content\images\pics\kkk_files\anchor.html" />
+    <Content Include="Content\images\pics\kkk_files\audio-devices.html" />
+    <Content Include="Content\images\pics\kkk_files\c294b71b639cd83ba7a6356dfe095dbb.jpg" />
+    <Content Include="Content\images\pics\kkk_files\ct.html" />
+    <Content Include="Content\images\pics\kkk_files\PinSaveButtonCommon-415b2f5366b440f1.css" />
+    <Content Include="Content\images\pics\kkk_files\saved_resource%281%29.html" />
+    <Content Include="Content\images\pics\kkk_files\saved_resource.html" />
+    <Content Include="Content\images\pics\kkk_files\styles__ltr.css" />
+    <Content Include="Content\images\pics\kkk_files\[id]-authdesktop-62bbd4d7c8e22f17.css" />
+    <Content Include="Content\images\pics\kkk_files\_client-authdesktop-bedc82b2ce95fba2.css" />
+    <Content Include="Content\images\pics\sss.html" />
+    <Content Include="Content\images\pics\sss_files\148cac9637146c1d39f01e78a0909ce3.jpg" />
+    <Content Include="Content\images\pics\sss_files\281d2f090b27c352217f51ca2fed3753.jpg" />
+    <Content Include="Content\images\pics\sss_files\4d63a39c25de82155ab4eb8c1b47320b.jpg" />
+    <Content Include="Content\images\pics\sss_files\9df71b9ed36485b0a4054760290f921d.jpg" />
+    <Content Include="Content\images\pics\sss_files\anchor.html" />
+    <Content Include="Content\images\pics\sss_files\audio-devices.html" />
+    <Content Include="Content\images\pics\sss_files\b66e923016feb6a026957485cf360ef9.jpg" />
+    <Content Include="Content\images\pics\sss_files\c294b71b639cd83ba7a6356dfe095dbb.jpg" />
+    <Content Include="Content\images\pics\sss_files\c724b98a1e5788f8ae8c13b2494dc3a4.jpg" />
+    <Content Include="Content\images\pics\sss_files\ct.html" />
+    <Content Include="Content\images\pics\sss_files\dfd826165bcde375c6692812c6eacb88.jpg" />
+    <Content Include="Content\images\pics\sss_files\ed3f34e67bea1cb5767d340f422b0177%281%29.jpg" />
+    <Content Include="Content\images\pics\sss_files\ed3f34e67bea1cb5767d340f422b0177.jpg" />
+    <Content Include="Content\images\pics\sss_files\fd829ea4c82d31757919090801ee99b9.jpg" />
+    <Content Include="Content\images\pics\sss_files\PinSaveButtonCommon-415b2f5366b440f1.css" />
+    <Content Include="Content\images\pics\sss_files\saved_resource%281%29.html" />
+    <Content Include="Content\images\pics\sss_files\saved_resource.html" />
+    <Content Include="Content\images\pics\sss_files\styles__ltr.css" />
+    <Content Include="Content\images\pics\sss_files\[id]-authdesktop-62bbd4d7c8e22f17.css" />
+    <Content Include="Content\images\pics\sss_files\_client-authdesktop-bedc82b2ce95fba2.css" />
+    <Content Include="Content\images\undraw-contact.svg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\js\jquery.sticky.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\sections.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>sections.edmx</DependentUpon>
+      <LastGenOutput>sections.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\sections.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>sections.edmx</DependentUpon>
+      <LastGenOutput>sections.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\.DS_Store" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\.DS_Store" />
+    <Content Include="Content\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\fonts\icomoon\selection.json" />
+    <Content Include="Content\images\.DS_Store" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\17001-76f44bd88574d6ad.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\18419-5e2a3f58cb210764.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\21151-e8a2a37dfd00709e.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\22545-6425da06d3a7694c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\29635-674634b13638aa22.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\34363-a69bc36285af0752.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\34441-111d512cbf1f7ef9.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\37819-1ea32b8cf1afcc5b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\4646-8f65a44d23d91312.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\53959-379f1a11314c3314.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\54372-2becff27bff8e9c6.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\55164-8c4b07eed0e80e4b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\5805-46bf030288876665.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\62015-e38c1397ecaa4a5d.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\6345-6c6cadd8bff0cbbb.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\66113-a2c6b2dfeac51fe2.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\67631-fd050582776b9311.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\72664-9a25c54776b4cbbd.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\75348-80f0a9da7211985b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\76344-631755e98d2fcafe.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\76532-b355d52d50b0718b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\76775-9c70660640f27200.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\78821-3ae22b35c8623d56.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\83119-32a65b6a5d497981.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\8475-5eec3caddfa2260e.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\85815-ca6f95b31baabb8c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\88273-66807416b9ce4450.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\90850-febab6bb49e890bd.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\94451-e8bd2816b3917d9c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\96991-7637b20c0ced0b99.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\9859-fe2c2cc4bc8bc9a4.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\AuthDesktopPinRep-9cae7c52117334a6.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\enterprise.js.download" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\index-authdesktop-5995fcc8855cd019.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\locale-en_GB-lite-js-9390955405849e47.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\polyfills-8e6094537011230b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\radar.js.download" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\recaptcha__en.js.download" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\runtime-f1bb33abd895f23a.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\vendor-react-5b503604a5e22547.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\[id]-authdesktop-d9bdcb9cc229a797.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\[scope]-authdesktop-ef67d3519c69de20.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\[username]-authdesktop-9a10e3cb2c8a1714.mjs" />
+    <Content Include="Content\images\pics\%28114%29 dd_files\_client-authdesktop-15a712dd00dc48fc.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\17001-76f44bd88574d6ad.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\18419-5e2a3f58cb210764.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\21151-e8a2a37dfd00709e.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\22545-6425da06d3a7694c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\29635-674634b13638aa22.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\34363-a69bc36285af0752.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\34441-111d512cbf1f7ef9.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\37819-1ea32b8cf1afcc5b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\4646-8f65a44d23d91312.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\53959-379f1a11314c3314.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\54372-2becff27bff8e9c6.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\55164-8c4b07eed0e80e4b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\5805-46bf030288876665.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\62015-e38c1397ecaa4a5d.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\6345-6c6cadd8bff0cbbb.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\66113-a2c6b2dfeac51fe2.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\67631-fd050582776b9311.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\72664-9a25c54776b4cbbd.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\75348-80f0a9da7211985b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\76344-631755e98d2fcafe.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\76532-b355d52d50b0718b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\76775-9c70660640f27200.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\78821-3ae22b35c8623d56.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\83119-32a65b6a5d497981.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\8475-5eec3caddfa2260e.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\85815-ca6f95b31baabb8c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\88273-66807416b9ce4450.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\90850-febab6bb49e890bd.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\94451-e8bd2816b3917d9c.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\96991-7637b20c0ced0b99.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\9859-fe2c2cc4bc8bc9a4.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\AuthDesktopPinRep-9cae7c52117334a6.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\enterprise.js.download" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\index-authdesktop-5995fcc8855cd019.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\locale-en_GB-lite-js-9390955405849e47.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\polyfills-8e6094537011230b.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\recaptcha__en.js.download" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\runtime-f1bb33abd895f23a.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\vendor-react-5b503604a5e22547.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\[id]-authdesktop-d9bdcb9cc229a797.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\[scope]-authdesktop-ef67d3519c69de20.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\[username]-authdesktop-9a10e3cb2c8a1714.mjs" />
+    <Content Include="Content\images\pics\%28114%29 Pinterest_files\_client-authdesktop-15a712dd00dc48fc.mjs" />
+    <Content Include="Content\images\pics\cover-artwork.webp" />
+    <Content Include="Content\images\pics\kkk_files\17001-76f44bd88574d6ad.mjs" />
+    <Content Include="Content\images\pics\kkk_files\18419-5e2a3f58cb210764.mjs" />
+    <Content Include="Content\images\pics\kkk_files\21151-e8a2a37dfd00709e.mjs" />
+    <Content Include="Content\images\pics\kkk_files\22545-6425da06d3a7694c.mjs" />
+    <Content Include="Content\images\pics\kkk_files\29635-674634b13638aa22.mjs" />
+    <Content Include="Content\images\pics\kkk_files\34363-a69bc36285af0752.mjs" />
+    <Content Include="Content\images\pics\kkk_files\34441-111d512cbf1f7ef9.mjs" />
+    <Content Include="Content\images\pics\kkk_files\37819-1ea32b8cf1afcc5b.mjs" />
+    <Content Include="Content\images\pics\kkk_files\4646-8f65a44d23d91312.mjs" />
+    <Content Include="Content\images\pics\kkk_files\53959-379f1a11314c3314.mjs" />
+    <Content Include="Content\images\pics\kkk_files\54372-2becff27bff8e9c6.mjs" />
+    <Content Include="Content\images\pics\kkk_files\55164-8c4b07eed0e80e4b.mjs" />
+    <Content Include="Content\images\pics\kkk_files\5805-46bf030288876665.mjs" />
+    <Content Include="Content\images\pics\kkk_files\62015-e38c1397ecaa4a5d.mjs" />
+    <Content Include="Content\images\pics\kkk_files\6345-6c6cadd8bff0cbbb.mjs" />
+    <Content Include="Content\images\pics\kkk_files\66113-a2c6b2dfeac51fe2.mjs" />
+    <Content Include="Content\images\pics\kkk_files\67631-fd050582776b9311.mjs" />
+    <Content Include="Content\images\pics\kkk_files\72664-9a25c54776b4cbbd.mjs" />
+    <Content Include="Content\images\pics\kkk_files\75348-80f0a9da7211985b.mjs" />
+    <Content Include="Content\images\pics\kkk_files\76344-631755e98d2fcafe.mjs" />
+    <Content Include="Content\images\pics\kkk_files\76532-b355d52d50b0718b.mjs" />
+    <Content Include="Content\images\pics\kkk_files\76775-9c70660640f27200.mjs" />
+    <Content Include="Content\images\pics\kkk_files\78821-3ae22b35c8623d56.mjs" />
+    <Content Include="Content\images\pics\kkk_files\83119-32a65b6a5d497981.mjs" />
+    <Content Include="Content\images\pics\kkk_files\8475-5eec3caddfa2260e.mjs" />
+    <Content Include="Content\images\pics\kkk_files\85815-ca6f95b31baabb8c.mjs" />
+    <Content Include="Content\images\pics\kkk_files\88273-66807416b9ce4450.mjs" />
+    <Content Include="Content\images\pics\kkk_files\90850-febab6bb49e890bd.mjs" />
+    <Content Include="Content\images\pics\kkk_files\94451-e8bd2816b3917d9c.mjs" />
+    <Content Include="Content\images\pics\kkk_files\96991-7637b20c0ced0b99.mjs" />
+    <Content Include="Content\images\pics\kkk_files\9859-fe2c2cc4bc8bc9a4.mjs" />
+    <Content Include="Content\images\pics\kkk_files\AuthDesktopPinRep-9cae7c52117334a6.mjs" />
+    <Content Include="Content\images\pics\kkk_files\enterprise.js.download" />
+    <Content Include="Content\images\pics\kkk_files\index-authdesktop-5995fcc8855cd019.mjs" />
+    <Content Include="Content\images\pics\kkk_files\locale-en_GB-lite-js-9390955405849e47.mjs" />
+    <Content Include="Content\images\pics\kkk_files\polyfills-8e6094537011230b.mjs" />
+    <Content Include="Content\images\pics\kkk_files\radar.js.download" />
+    <Content Include="Content\images\pics\kkk_files\recaptcha__en.js.download" />
+    <Content Include="Content\images\pics\kkk_files\runtime-f1bb33abd895f23a.mjs" />
+    <Content Include="Content\images\pics\kkk_files\vendor-react-5b503604a5e22547.mjs" />
+    <Content Include="Content\images\pics\kkk_files\[id]-authdesktop-d9bdcb9cc229a797.mjs" />
+    <Content Include="Content\images\pics\kkk_files\[scope]-authdesktop-ef67d3519c69de20.mjs" />
+    <Content Include="Content\images\pics\kkk_files\[username]-authdesktop-9a10e3cb2c8a1714.mjs" />
+    <Content Include="Content\images\pics\kkk_files\_client-authdesktop-15a712dd00dc48fc.mjs" />
+    <Content Include="Content\images\pics\sss_files\17001-76f44bd88574d6ad.mjs" />
+    <Content Include="Content\images\pics\sss_files\18419-5e2a3f58cb210764.mjs" />
+    <Content Include="Content\images\pics\sss_files\21151-e8a2a37dfd00709e.mjs" />
+    <Content Include="Content\images\pics\sss_files\22545-6425da06d3a7694c.mjs" />
+    <Content Include="Content\images\pics\sss_files\29635-674634b13638aa22.mjs" />
+    <Content Include="Content\images\pics\sss_files\34363-a69bc36285af0752.mjs" />
+    <Content Include="Content\images\pics\sss_files\34441-111d512cbf1f7ef9.mjs" />
+    <Content Include="Content\images\pics\sss_files\37819-1ea32b8cf1afcc5b.mjs" />
+    <Content Include="Content\images\pics\sss_files\4646-8f65a44d23d91312.mjs" />
+    <Content Include="Content\images\pics\sss_files\53959-379f1a11314c3314.mjs" />
+    <Content Include="Content\images\pics\sss_files\54372-2becff27bff8e9c6.mjs" />
+    <Content Include="Content\images\pics\sss_files\55164-8c4b07eed0e80e4b.mjs" />
+    <Content Include="Content\images\pics\sss_files\5805-46bf030288876665.mjs" />
+    <Content Include="Content\images\pics\sss_files\62015-e38c1397ecaa4a5d.mjs" />
+    <Content Include="Content\images\pics\sss_files\6345-6c6cadd8bff0cbbb.mjs" />
+    <Content Include="Content\images\pics\sss_files\66113-a2c6b2dfeac51fe2.mjs" />
+    <Content Include="Content\images\pics\sss_files\67631-fd050582776b9311.mjs" />
+    <Content Include="Content\images\pics\sss_files\72664-9a25c54776b4cbbd.mjs" />
+    <Content Include="Content\images\pics\sss_files\75348-80f0a9da7211985b.mjs" />
+    <Content Include="Content\images\pics\sss_files\76344-631755e98d2fcafe.mjs" />
+    <Content Include="Content\images\pics\sss_files\76532-b355d52d50b0718b.mjs" />
+    <Content Include="Content\images\pics\sss_files\76775-9c70660640f27200.mjs" />
+    <Content Include="Content\images\pics\sss_files\78821-3ae22b35c8623d56.mjs" />
+    <Content Include="Content\images\pics\sss_files\83119-32a65b6a5d497981.mjs" />
+    <Content Include="Content\images\pics\sss_files\8475-5eec3caddfa2260e.mjs" />
+    <Content Include="Content\images\pics\sss_files\85815-ca6f95b31baabb8c.mjs" />
+    <Content Include="Content\images\pics\sss_files\88273-66807416b9ce4450.mjs" />
+    <Content Include="Content\images\pics\sss_files\90850-febab6bb49e890bd.mjs" />
+    <Content Include="Content\images\pics\sss_files\94451-e8bd2816b3917d9c.mjs" />
+    <Content Include="Content\images\pics\sss_files\96991-7637b20c0ced0b99.mjs" />
+    <Content Include="Content\images\pics\sss_files\9859-fe2c2cc4bc8bc9a4.mjs" />
+    <Content Include="Content\images\pics\sss_files\AuthDesktopPinRep-9cae7c52117334a6.mjs" />
+    <Content Include="Content\images\pics\sss_files\enterprise.js.download" />
+    <Content Include="Content\images\pics\sss_files\index-authdesktop-5995fcc8855cd019.mjs" />
+    <Content Include="Content\images\pics\sss_files\locale-en_GB-lite-js-9390955405849e47.mjs" />
+    <Content Include="Content\images\pics\sss_files\polyfills-8e6094537011230b.mjs" />
+    <Content Include="Content\images\pics\sss_files\radar.js.download" />
+    <Content Include="Content\images\pics\sss_files\recaptcha__en.js.download" />
+    <Content Include="Content\images\pics\sss_files\runtime-f1bb33abd895f23a.mjs" />
+    <Content Include="Content\images\pics\sss_files\vendor-react-5b503604a5e22547.mjs" />
+    <Content Include="Content\images\pics\sss_files\[id]-authdesktop-d9bdcb9cc229a797.mjs" />
+    <Content Include="Content\images\pics\sss_files\[scope]-authdesktop-ef67d3519c69de20.mjs" />
+    <Content Include="Content\images\pics\sss_files\[username]-authdesktop-9a10e3cb2c8a1714.mjs" />
+    <Content Include="Content\images\pics\sss_files\_client-authdesktop-15a712dd00dc48fc.mjs" />
+    <EntityDeploy Include="Models\sections.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>sections.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\sections.edmx.diagram">
+      <DependentUpon>sections.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Registration\Dashboard.cshtml" />
+    <Content Include="Views\Registration\Login.cshtml" />
+    <Content Include="Views\Registration\SignUp.cshtml" />
+    <Content Include="Views\Registration\Course.cshtml" />
+    <Content Include="Views\Registration\CourseDetails.cshtml" />
+    <Content Include="Views\Registration\CoursebyCatagory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54142</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44377/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

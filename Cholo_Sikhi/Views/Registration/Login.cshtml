@@ -1,0 +1,148 @@
+﻿@model Cholo_Sikhi.Models.userinfo
+@{
+    Layout = null;
+    ViewBag.Title = "SignUp";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Style -->
+
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <title>Website Menu #8</title>
+</head>
+<body>
+
+
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" style="color: Black;">Cholo Shiki</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                    <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Courses</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="#">Food Catering</a>
+                                <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                                <a class="dropdown-item" href="#">Wedding &amp; Birthday</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="#">Food Catering</a>
+                                <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                                <a class="dropdown-item" href="#">Wedding &amp; Birthday</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">News</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item cta-btn">
+                            <a class="nav-link" href="#">Sign In</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+
+
+    <div class="hero">
+        <div class="content">
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+
+
+                        <div class="row justify-content-xl-between">
+                            <div class="col-md-6">
+
+                                <h3 class="heading mb-4">Let's talk about everything!</h3>
+                                <p>Get unlimited access to 17,000+ of Cholo Shikhi’s top courses for your team. Learn and improve skills across business, tech, design, and more</p>
+
+                                <p><img src="~/Content/images/undraw-contact.svg" alt="Image" class="img-fluid"></p>
+
+
+                            </div>
+                            <div class="col-md-5 mt-5">
+
+                                <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                                    <div class="row">
+                                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2 ml-2" })
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" name="email" id="eame" placeholder="Your email">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label for="exampleInputPassword1" class="ml-2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 text-center mt-2">
+                                            <input type="submit" value="Sign In" class="btn btn-primary rounded-0 py-2 px-4">
+                                            <span class="submitting"></span>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div id="form-message-warning mt-4"></div>
+                                <div id="form-message-success">
+                                    Your message was sent, thank you!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.sticky.js"></script>
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>
