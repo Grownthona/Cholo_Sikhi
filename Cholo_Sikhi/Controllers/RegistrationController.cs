@@ -15,7 +15,14 @@ namespace Cholo_Sikhi.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            if (Session["Useremail"]==null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("DashBoard");
+            }
         }
 
       
@@ -43,10 +50,11 @@ namespace Cholo_Sikhi.Controllers
              return View(students.ToList());
 
          }
-        
 
-       
-        public ActionResult CourseDetails(int id)
+
+      
+
+         public ActionResult CourseDetails(int id)
         {
            
             List<Cours>course = db.Courses.ToList();
@@ -68,14 +76,69 @@ namespace Cholo_Sikhi.Controllers
             
             //var courseinfos = db.Courses.Where(x => x.c_id == id).FirstOrDefault();
             return View(info);
-           
         }
-       
+        [HttpPost]
+        public ActionResult CourseDetails(String mail,int prc,int courseid)
+        {
+            Cart cart = new Cart();
+            cart.price = prc;
+            cart.coursename = "CourseName";
+            cart.c_id = courseid;
+            cart.username = Session["Username"].ToString();
+            cart.user_email = mail;
+
+            db.Carts.Add(cart);
+            db.SaveChanges();
+            return RedirectToAction("Cart");
+        }
+
+        public ActionResult Cart()
+        {
+            List<Cart> cartinfo = db.Carts.ToList();
+            List<Cart>cart = db.Carts.Where(x => x.user_email.Equals("lala")).ToList();
+
+            return View(cart);
+        }
+        [HttpPost]
+        public ActionResult Cart(String mail)
+        {
+            try
+            {
+                List<Cart> cart = db.Carts.Where(x => x.user_email == "lala").ToList();
+
+              
+                Purchase p = new Purchase();
+                foreach(var pur in cart)
+                {
+                    p.price = pur.price;
+                    p.coursename = pur.coursename;
+                    p.c_id = pur.c_id;
+                    p.purchasedate = "08-30-2022";
+
+                    db.Purchases.Add(p);
+                    db.SaveChanges();
+                }
+                // Try to remove it
+              
+                db.Carts.RemoveRange(cart);
+
+                // Save the changes
+                db.SaveChanges();
+            }
+            catch
+            {
+                //Log the error add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            return Content("lala");
+        }
+
         public ActionResult CoursebyCatagorys()
         {
            return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Login(userinfo s)
         {
@@ -86,9 +149,9 @@ namespace Cholo_Sikhi.Controllers
                     var obj = db.userinfoes.Where(a =>a.email.Equals(s.email) && a.pass.Equals(s.pass)).FirstOrDefault();
                     if (obj != null)
                     {
-                        //Session["Useremail"] = obj.email.ToString();
-                       //Session["UserName"] = obj.name.ToString();
-                       return RedirectToAction("DashBoard");
+                       Session["Useremail"] = obj.email.ToString();
+                       Session["Username"] = obj.name.ToString();
+                    return RedirectToAction("DashBoard");
                     }
                     else
                     {
@@ -103,15 +166,14 @@ namespace Cholo_Sikhi.Controllers
 
         public ActionResult DashBoard()
         {
-            /*if (Session["Useremail"] != null)
+            if (Session["Useremail"] != null)
             {
                 return View();
             }
             else
             {
                 return RedirectToAction("Login");
-            }*/
-            return View();
+            }
         }
        
 

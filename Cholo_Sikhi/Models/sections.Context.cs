@@ -29,5 +29,7 @@ namespace Cholo_Sikhi.Models
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<userinfo> userinfoes { get; set; }
         public virtual DbSet<SectionContent> SectionContents { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
     }
 }

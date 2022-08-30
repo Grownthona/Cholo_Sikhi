@@ -24,16 +24,23 @@
 </head>
 <body>
 
-    @{ int price = 0;}
+    @{ int p = 0, courseid = 0; }
+    @{ string coursename = "";}
     <div class="details-body">
 
         <div class="details-body-container">
             @foreach (var dis in Model.Take(1))
             {
+                p = Convert.ToInt32(dis.coursedetails.price);
+                coursename = dis.coursedetails.tittle.Trim().ToString();
+                courseid = Convert.ToInt32(dis.coursedetails.c_id);
+
                 <div class="course-data">
                     <div class="catagory">
 
                         <h5>@dis.coursedetails.catagory</h5>
+ 
+
                     </div>
                     <div class="description">
                         <h2>@dis.coursedetails.tittle</h2>
@@ -57,6 +64,7 @@
     @{ string description = "", checkdot = "";}
     @{ int quiz = 0, video = 0;}
     @{ List<int> firstlist = new List<int>(); List<int> secondlist = new List<int>();}
+
     @foreach (var countcontent in Model)
     {
         if (countcontent.content.content_type.ToString() == "play" && secondlist.Contains(Convert.ToInt32(countcontent.content.subsec_id)) == false)
@@ -66,23 +74,28 @@
         }
     }
 
-    <div class="learn2-box">
-        <h1>$19.99</h1>
-        <button class="button-66" role="button">Buy Now</button>
-        <p>30-Day Money-Back Guarantee</p>
-        <div class="lessons1">
-            <ul class="b">
-                <h5>This course includes:</h5>
-                <li><span>&#10003;</span>@video on-demand video</li>
-                <li><span>&#10003;</span>1 article</li>
-                <li><span>&#10003;</span>1 downloadable resource</li>
-                <li><span>&#10003;</span>6 coding exercises</li>
-                <li><span>&#10003;</span>Full lifetime access</li>
-                <li><span>&#10003;</span>Access on mobile and TV</li>
-                <li><span>&#10003;</span>Certificate of completion</li>
-            </ul>
-        </div>
+<div class="learn2-box">
+    <h1>19.99$</h1>
+    <form method="post" id="contactForm" name="contactForm">
+        <input type="text" class="form-control" name="mail" id="eame" value=@Session["Useremail"]>
+        <input type="text" class="form-control" name="prc" id="eame" value=@p>
+        <input type="text" class="form-control" name="courseid" id="eame" value=@courseid>
+        <button input type="submit" class="button-66" role="button">Buy Now</button>
+    </form>
+    <p>30-Day Money-Back Guarantee</p>
+    <div class="lessons1">
+        <ul class="b">
+            <h5>This course includes:</h5>
+            <li><span>&#10003;</span>@video on-demand video</li>
+            <li><span>&#10003;</span>1 article</li>
+            <li><span>&#10003;</span>1 downloadable resource</li>
+            <li><span>&#10003;</span>6 coding exercises</li>
+            <li><span>&#10003;</span>Full lifetime access</li>
+            <li><span>&#10003;</span>Access on mobile and TV</li>
+            <li><span>&#10003;</span>Certificate of completion</li>
+        </ul>
     </div>
+</div>
 
     <div class="course-data2">
         <div class="learn-box">
@@ -330,6 +343,10 @@
                 });
             }
         </script>
+
+    <script>
+        document.querySelector('.form-control').innerHTML = Session["Useremail"];
+    </script>
 
 
 

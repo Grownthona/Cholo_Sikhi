@@ -24,31 +24,34 @@
             <select id="fruitSelector" name="fruitSelector" onchange="this.form.submit()">
                 <option value="0" selected="selected" disabled="disabled">Select Fruit</option>
                 <option value="price_desc">price desc</option>
-                <option value="price">price</option> 
+                <option value="price">price</option>
             </select>
 
             <label for="cars">Choose a car:</label>
-            <input type="text"  onclick="(this.type='submit')" class="form-control" name="sortOrder" id="eame" placeholder="Your email">
+            <input type="text" onclick="(this.type='submit')" class="form-control" name="sortOrder" id="eame" placeholder="Your email">
             <button input type="submit">Submit</button>
         </form>
 
     </div>
 
+
     <div class="course">
 
         <div class="couse-container">
+            @if (Session["Useremail"] != null)
+            {<p>@Session["Useremail"].ToString()</p>}
             @foreach (var course in Model)
-             {
+            {
                 <div class="wrapper">
                     <div>
-                        
+
                         <div class="check">
                             <h3>@Html.ActionLink(@course.tittle, "CourseDetails", new { id = course.c_id })</h3>
-                            <div >@course.teacher</div>
+                            <div>@course.teacher</div>
                             <div>
                                 <p>@course.c_description</p>
                             </div>
-                            <div >
+                            <div>
                                 <a href="" class="button">@course.price</a>
                             </div>
                         </div>
@@ -58,7 +61,7 @@
              }
         </div>
     </div>
-    </div>
+    
 
 
 

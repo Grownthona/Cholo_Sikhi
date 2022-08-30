@@ -29,6 +29,7 @@
 </head>
 <body>
 
+   
 
     <header role="banner">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -101,13 +102,15 @@
                             <div class="col-md-5 mt-5">
 
                                 <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
                                     <div class="row">
                                         @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2 ml-2" })
                                         <div class="col-md-12 form-group">
                                             <input type="text" class="form-control" name="email" id="eame" placeholder="Your email">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12 form-group">
                                             <label for="exampleInputPassword1" class="ml-2">Password</label>

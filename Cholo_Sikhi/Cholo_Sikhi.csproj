@@ -134,10 +134,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cours.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Multiple.cs" />
+    <Compile Include="Models\Purchase.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Section.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
@@ -557,6 +563,7 @@
     <Content Include="Views\Registration\Course.cshtml" />
     <Content Include="Views\Registration\CourseDetails.cshtml" />
     <Content Include="Views\Registration\CoursebyCatagory.cshtml" />
+    <Content Include="Views\Registration\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

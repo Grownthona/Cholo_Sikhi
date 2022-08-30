@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="usersModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="user_email" Type="varchar" MaxLength="255" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="coursename" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+        </EntityType>
         <EntityType Name="Courses">
           <Key>
             <PropertyRef Name="c_id" />
@@ -18,6 +29,17 @@
           <Property Name="c_img" Type="varchar" MaxLength="255" />
           <Property Name="Detailcode" Type="varchar" MaxLength="255" />
           <Property Name="learn_des" Type="varchar" MaxLength="7999" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="coursename" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+          <Property Name="purchasedate" Type="varchar" MaxLength="255" />
+          <Property Name="useremail" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -48,7 +70,9 @@
           <Property Name="pass" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="usersModel1StoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SectionContent" EntityType="Self.SectionContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
@@ -93,6 +117,8 @@
           <EntitySet Name="Sections" EntityType="Self.Section" />
           <EntitySet Name="userinfoes" EntityType="Self.userinfo" />
           <EntitySet Name="SectionContents" EntityType="usersModel1.SectionContent" />
+          <EntitySet Name="Carts" EntityType="usersModel1.Cart" />
+          <EntitySet Name="Purchases" EntityType="usersModel1.Purchase" />
         </EntityContainer>
         <EntityType Name="SectionContent">
           <Key>
@@ -104,6 +130,28 @@
           <Property Name="subsec_tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="content_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="content_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="user_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="coursename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="coursename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="purchasedate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -154,6 +202,30 @@
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
                 <ScalarProperty Name="s_id" ColumnName="s_id" />
                 <ScalarProperty Name="subsec_id" ColumnName="subsec_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="usersModel1.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="coursename" ColumnName="coursename" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="usersModel1.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="purchasedate" ColumnName="purchasedate" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="coursename" ColumnName="coursename" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
