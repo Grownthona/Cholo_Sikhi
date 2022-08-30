@@ -50,8 +50,6 @@ namespace Cholo_Sikhi.Controllers
              return View(students.ToList());
 
          }
-
-
       
 
          public ActionResult CourseDetails(int id)
@@ -95,17 +93,17 @@ namespace Cholo_Sikhi.Controllers
         public ActionResult Cart()
         {
             List<Cart> cartinfo = db.Carts.ToList();
-            List<Cart>cart = db.Carts.Where(x => x.user_email.Equals("lala")).ToList();
+            List<Cart>cart = db.Carts.Where(x => x.user_email.Equals("rahmangronthona@gmail.com")).ToList();
 
             return View(cart);
         }
         [HttpPost]
         public ActionResult Cart(String mail)
         {
+            
             try
             {
-                List<Cart> cart = db.Carts.Where(x => x.user_email == "lala").ToList();
-
+                List<Cart> cart = db.Carts.Where(x => x.user_email == "rahmangronthona@gmail.com").ToList();
               
                 Purchase p = new Purchase();
                 foreach(var pur in cart)
@@ -114,7 +112,7 @@ namespace Cholo_Sikhi.Controllers
                     p.coursename = pur.coursename;
                     p.c_id = pur.c_id;
                     p.purchasedate = "08-30-2022";
-
+                    p.useremail = pur.user_email;
                     db.Purchases.Add(p);
                     db.SaveChanges();
                 }
