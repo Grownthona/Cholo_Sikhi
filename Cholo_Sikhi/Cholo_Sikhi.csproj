@@ -144,7 +144,7 @@
     <Compile Include="Models\Purchase.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Quize.cs">
+    <Compile Include="Models\Quiz.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Section.cs">
