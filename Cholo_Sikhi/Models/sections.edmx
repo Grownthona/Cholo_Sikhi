@@ -41,6 +41,20 @@
           <Property Name="purchasedate" Type="varchar" MaxLength="255" />
           <Property Name="useremail" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Quizes">
+          <Key>
+            <PropertyRef Name="q_id" />
+          </Key>
+          <Property Name="q_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="s_id" Type="int" />
+          <Property Name="question" Type="varchar" MaxLength="255" />
+          <Property Name="option1" Type="varchar" MaxLength="255" />
+          <Property Name="option2" Type="varchar" MaxLength="255" />
+          <Property Name="option3" Type="varchar" MaxLength="255" />
+          <Property Name="option4" Type="varchar" MaxLength="255" />
+          <Property Name="answer" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="Section">
           <Key>
             <PropertyRef Name="s_id" />
@@ -73,6 +87,7 @@
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quizes" EntityType="Self.Quizes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SectionContent" EntityType="Self.SectionContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
@@ -119,6 +134,7 @@
           <EntitySet Name="SectionContents" EntityType="usersModel1.SectionContent" />
           <EntitySet Name="Carts" EntityType="usersModel1.Cart" />
           <EntitySet Name="Purchases" EntityType="usersModel1.Purchase" />
+          <EntitySet Name="Quizes" EntityType="usersModel1.Quize" />
         </EntityContainer>
         <EntityType Name="SectionContent">
           <Key>
@@ -152,6 +168,20 @@
           <Property Name="price" Type="Int32" />
           <Property Name="purchasedate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Quize">
+          <Key>
+            <PropertyRef Name="q_id" />
+          </Key>
+          <Property Name="q_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="s_id" Type="Int32" />
+          <Property Name="question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="option1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="option2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="option3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="option4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -226,6 +256,21 @@
                 <ScalarProperty Name="coursename" ColumnName="coursename" />
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
                 <ScalarProperty Name="p_id" ColumnName="p_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quizes">
+            <EntityTypeMapping TypeName="usersModel1.Quize">
+              <MappingFragment StoreEntitySet="Quizes">
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="option4" ColumnName="option4" />
+                <ScalarProperty Name="option3" ColumnName="option3" />
+                <ScalarProperty Name="option2" ColumnName="option2" />
+                <ScalarProperty Name="option1" ColumnName="option1" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="q_id" ColumnName="q_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
