@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="usersModel1.SectionContent" Width="1.5" PointX="2.75" PointY="2.625" />
         <EntityTypeShape EntityType="usersModel1.Cart" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="usersModel1.Purchase" Width="1.5" PointX="4.75" PointY="3.25" />
-        <EntityTypeShape EntityType="usersModel1.Quize" Width="1.5" PointX="6.625" PointY="1.75" />
+        <EntityTypeShape EntityType="usersModel1.Quiz" Width="1.5" PointX="6.75" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

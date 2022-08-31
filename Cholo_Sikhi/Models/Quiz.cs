@@ -12,16 +12,16 @@ namespace Cholo_Sikhi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Quize
+    public partial class Quiz
     {
         public int q_id { get; set; }
         public Nullable<int> c_id { get; set; }
         public Nullable<int> s_id { get; set; }
         public string question { get; set; }
-        public string option1 { get; set; }
-        public string option2 { get; set; }
-        public string option3 { get; set; }
-        public string option4 { get; set; }
+        public string o1 { get; set; }
+        public string o2 { get; set; }
+        public string o3 { get; set; }
+        public string o4 { get; set; }
         public string answer { get; set; }
     }
 }
