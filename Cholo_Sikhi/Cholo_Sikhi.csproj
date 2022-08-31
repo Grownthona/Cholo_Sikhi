@@ -182,6 +182,7 @@
     <Content Include="Content\css\bootstrap\mixins\_transition.css" />
     <Content Include="Content\css\bootstrap\utilities\_stretched-link.css" />
     <Content Include="Content\css\bootstrap\_media.css" />
+    <Content Include="Content\css\coursestyle.css" />
     <Content Include="Content\css\homee.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\style.css" />

@@ -38,16 +38,28 @@ namespace Cholo_Sikhi.Controllers
              var students = from s in db.Courses
                             select s;
 
-             switch (sortOrder)
-             {
-                 case "price_desc":
-                     students = students.OrderByDescending(s => s.price);
-                     break;
-                 case "price":
-                     students = students.OrderBy(s => s.price);
-                     break;
-             }
-             return View(students.ToList());
+
+
+            switch (sortOrder)
+            {
+                case "Programming":
+                    students = students.Where(s => s.catagory.Equals("Programming"));
+                    break;
+                case "Design":
+                    students = students.Where(s => s.catagory.Equals("Design"));
+                    break;
+                case "price_desc":
+                    students = students.OrderByDescending(s => s.price);
+                    break;
+                case "price":
+                    students = students.OrderBy(s => s.price);
+                    break;
+                case "All":
+                    students = students.OrderBy(s => s.c_id);
+                    break;
+            }
+
+            return View(students.ToList());
 
          }
       

@@ -12,78 +12,129 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/Content/css/homee.css">
+    <link rel="stylesheet" href="~/Content/css/coursestyle.css">
     <title>Course</title>
 </head>
 <body>
 
-
-    <div class="catagory-select">
-        <form method="post" id="contactForm" name="contactForm">
-
-            <select id="fruitSelector" name="fruitSelector" onchange="this.form.submit()">
-                <option value="0" selected="selected" disabled="disabled">Select Fruit</option>
-                <option value="price_desc">price desc</option>
-                <option value="price">price</option>
-            </select>
-
-            <label for="cars">Choose a car:</label>
-            <input type="text" onclick="(this.type='submit')" class="form-control" name="sortOrder" id="eame" placeholder="Your email">
-            <button input type="submit">Submit</button>
-        </form>
-
-    </div>
-
-
-    <div class="course">
-
-        <div class="couse-container">
-            @if (Session["Useremail"] != null)
-            {<p>@Session["Useremail"].ToString()</p>}
-            @foreach (var course in Model)
-            {
-                <div class="wrapper">
-                    <div>
-
-                        <div class="check">
-                            <h3>@Html.ActionLink(@course.tittle, "CourseDetails", new { id = course.c_id })</h3>
-                            <div>@course.teacher</div>
-                            <div>
-                                <p>@course.c_description</p>
-                            </div>
-                            <div>
-                                <a href="" class="button">@course.price</a>
-                            </div>
-                        </div>
-
+    @{ int decono = 0;}
+    
+        <div class="course">
+            <div class="course-body">
+                <div class="course-tittle">
+                    <h1>Courses</h1>
+                    <div class="des-p">
+                        <p>
+                            Whether you are just beginning or looking to develop web apps that utilize the React library, Udemy has a comprehensive selection of React courses. Take one of the many React training courses on Udemy from real world instructors, and develop your skills in this exciting field.
+                        </p>
                     </div>
                 </div>
-             }
-        </div>
-    </div>
-    
+                <form method="post" id="contactForm" name="contactForm">
+                    <div class="dotted"></div>
+                    <div class="filter">
+
+                        <select id="fruitSelector" name="fruitSelector" onchange="this.form.submit()">
+                            <option value="0" selected="selected" disabled="disabled">Select Sort</option>
+                            <option value="price_desc">Highest Price</option>
+                            <option value="price">Lowest Price</option>
+                        </select>
+                        <input type="text" class="form-control" name="sortOrder" id="eame" style="display: none;" placeholder="Your email">
+
+                    </div>
+
+                    <div>
+                        <div class="catagories">
+                            <div class="box">
+                                <h3>Category</h3>
+                                <div class="form-check">
+
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Programming" />
+                                    <label class="form-check-label1" for="flexRadioDefault1">
+                                        Programming
+                                    </label>
+                                    <br>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Design">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Design
+                                    </label>
+                                    <br>
+                                    <input class="form-check-input" type="radio" onchange="this.form.submit()" name="flexRadioDefault" id="flexRadioDefault1" value="All">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        All
+                                    </label>
+                                    <br>
+                                    <input class="form-check-input" type="radio" onchange="this.form.submit()" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Default radio
+                                    </label>
+                                    <br />
+                                    <input type="submit" />
+                                    <!---->
+                                    <span id="result" style="display:none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+
+                <div class="course-box">
+                    <div class="cards-wrapper">
+                        @foreach (var course in Model)
+                        {
+                            decono = Convert.ToInt32(course.c_id) % 6;
+                            <div class="card">
+                                <div class="card--data">
+                                    <span class="card--months">@course.catagory</span>
+                                    <h3 class="card--title">@Html.ActionLink(@course.tittle, "CourseDetails", new { id = course.c_id })</h3>
+
+                                    <span class="course-type">@course.price</span>
+                                </div>
+
+                                <div class="card-img-wrapper">
+                                </div>
+
+                                <div class="card-img-deco deco-@decono">
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script>
-        const theSelect = document.getElementById('fruitSelector')
 
-        // THIS LINE BINDS THE input EVENT TO THE ABOVE select ELEMENT
-        // IT WILL BE EXECUTED EVERYTIME THE USER SELECTS AN OPTION
-        theSelect.addEventListener('input', function () {
 
-            // THIS IS HOW YOU GET THE SELECTED OPTION'S TEXT
-            let selectedOptText = theSelect.options[theSelect.selectedIndex].value
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+                <script>
+                    const theSelect = document.getElementById('fruitSelector')
+                    const theSelectrating = document.getElementById('flexRadioDefault1')
 
-            // FINALLY, THIS COPIES THE ABOVE TEXT TO THE INPUT ELEMENT:
-            document.querySelector('.form-control').value = selectedOptText;
 
-        })
-    </script>
+                    // THIS LINE BINDS THE input EVENT TO THE ABOVE select ELEMENT
+                    // IT WILL BE EXECUTED EVERYTIME THE USER SELECTS AN OPTION
+                    theSelect.addEventListener('input', function () {
+
+                        // THIS IS HOW YOU GET THE SELECTED OPTION'S TEXT
+                        let selectedOptText = theSelect.options[theSelect.selectedIndex].value
+
+
+                        // FINALLY, THIS COPIES THE ABOVE TEXT TO THE INPUT ELEMENT:
+                        document.querySelector('.form-control').value = selectedOptText;
+
+                    })
+
+                    document.contactForm.onclick = function () {
+
+                        var radVal = document.contactForm.flexRadioDefault.value;
+                        result.innerHTML = 'You selected: ' + radVal;
+                        document.querySelector('.form-control').value = radVal;
+                    }
+
+                </script>
 
 
 </body>
