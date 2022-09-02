@@ -70,16 +70,17 @@ namespace Cholo_Sikhi.Controllers
             List<Cours>course = db.Courses.ToList();
             List<Section> section = db.Sections.ToList();
             List<SectionContent> subsection = db.SectionContents.ToList();
+            List<Review> reviews = db.Reviews.ToList();
 
             var info = from c in course
-                       join sec in section on c.c_id equals sec.c_id into table1
-                       from sec in table1.DefaultIfEmpty()
-                       join sub in subsection on sec.c_id equals sub.c_id into table2
-                       from sub in table2.DefaultIfEmpty()
+                       join rev in reviews on c.c_id equals rev.c_id
+                       join sec in section on rev.c_id equals sec.c_id
+                       join sub in subsection on sec.c_id equals sub.c_id
                        where c.c_id == id
                        select new Multiple
                        {
                            coursedetails = c,
+                           reviewdetails = rev,
                            sectiondetails = sec,
                            content = sub
                        };
@@ -88,18 +89,46 @@ namespace Cholo_Sikhi.Controllers
             return View(info);
         }
         [HttpPost]
-        public ActionResult CourseDetails(String mail,int prc,int courseid)
+        public ActionResult CourseDetails(String mail,int prc,int courseid,int rating,String review)
         {
-            Cart cart = new Cart();
+            /*Cart cart = new Cart();
             cart.price = prc;
             cart.coursename = "CourseName";
             cart.c_id = courseid;
-            cart.username = Session["Username"].ToString();
-            cart.user_email = mail;
+            cart.username = "Grownthona";
+            cart.user_email = "rahmangronthona@gmail.com";
 
             db.Carts.Add(cart);
             db.SaveChanges();
-            return RedirectToAction("Cart");
+            return RedirectToAction("Cart");*/
+            DateTime today = DateTime.Today;
+            Review rev = new Review();
+            rev.c_id = courseid;
+            rev.reviewdate = today.ToString();
+            rev.review1 = review;
+            rev.rating = rating;
+            rev.email = "rahmangronthona@gmail.com";
+
+            db.Reviews.Add(rev);
+            db.SaveChanges();
+            List<Cours> course = db.Courses.ToList();
+            List<Section> section = db.Sections.ToList();
+            List<SectionContent> subsection = db.SectionContents.ToList();
+
+            var info = from c in course
+                       join sec in section on c.c_id equals sec.c_id into table1
+                       from sec in table1.DefaultIfEmpty()
+                       join sub in subsection on sec.c_id equals sub.c_id into table2
+                       from sub in table2.DefaultIfEmpty()
+                       where c.c_id == courseid
+                       select new Multiple
+                       {
+                           coursedetails = c,
+                           sectiondetails = sec,
+                           content = sub
+                       };
+
+            return View(info);
         }
 
         public ActionResult Cart()
@@ -147,6 +176,14 @@ namespace Cholo_Sikhi.Controllers
         {
            return View();
         }
+
+        public ActionResult Quizport()
+        {
+            List<Quiz> quizinfo = db.Quizs.ToList();
+            return View(quizinfo);
+        }
+
+       
 
         [ValidateAntiForgeryToken]
         [HttpPost]

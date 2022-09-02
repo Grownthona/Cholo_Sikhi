@@ -55,6 +55,17 @@
           <Property Name="o4" Type="varchar" MaxLength="255" />
           <Property Name="answer" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="rating" Type="int" />
+          <Property Name="review" Type="varchar" MaxLength="6550" />
+          <Property Name="reviewdate" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="Section">
           <Key>
             <PropertyRef Name="s_id" />
@@ -88,6 +99,7 @@
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SectionContent" EntityType="Self.SectionContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
@@ -135,6 +147,7 @@
           <EntitySet Name="Carts" EntityType="usersModel1.Cart" />
           <EntitySet Name="Purchases" EntityType="usersModel1.Purchase" />
           <EntitySet Name="Quizs" EntityType="usersModel1.Quiz" />
+          <EntitySet Name="Reviews" EntityType="usersModel1.Review" />
         </EntityContainer>
         <EntityType Name="SectionContent">
           <Key>
@@ -182,6 +195,17 @@
           <Property Name="o3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="o4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="review1" Type="String" MaxLength="6550" FixedLength="false" Unicode="false" />
+          <Property Name="reviewdate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -271,6 +295,18 @@
                 <ScalarProperty Name="s_id" ColumnName="s_id" />
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
                 <ScalarProperty Name="q_id" ColumnName="q_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="usersModel1.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="reviewdate" ColumnName="reviewdate" />
+                <ScalarProperty Name="review1" ColumnName="review" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,18 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+@font-face {
+    font-family: 'Begnard';
+    src: url(./font/BagnardSans.otf);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    line-height: 1.5;
+}
+
+.quiz {
+    margin: 2rem;
+    padding: 1rem;
+}

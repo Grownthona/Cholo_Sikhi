@@ -147,6 +147,9 @@
     <Compile Include="Models\Quiz.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>sections.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Section.cs">
       <DependentUpon>sections.tt</DependentUpon>
     </Compile>
@@ -324,6 +327,7 @@
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\quizstyle.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -568,6 +572,7 @@
     <Content Include="Views\Registration\CourseDetails.cshtml" />
     <Content Include="Views\Registration\CoursebyCatagory.cshtml" />
     <Content Include="Views\Registration\Cart.cshtml" />
+    <Content Include="Views\Registration\Quizport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

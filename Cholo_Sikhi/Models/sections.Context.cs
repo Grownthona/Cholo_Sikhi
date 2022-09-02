@@ -32,5 +32,6 @@ namespace Cholo_Sikhi.Models
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<Quiz> Quizs { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
     }
 }
