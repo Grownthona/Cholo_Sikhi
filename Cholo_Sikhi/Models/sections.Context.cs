@@ -25,13 +25,14 @@ namespace Cholo_Sikhi.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<userinfo> userinfoes { get; set; }
-        public virtual DbSet<SectionContent> SectionContents { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
-        public virtual DbSet<Quiz> Quizs { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<SectionContent> SectionContents { get; set; }
+        public virtual DbSet<Quiz> Quizs { get; set; }
+        public virtual DbSet<Result> Results { get; set; }
     }
 }

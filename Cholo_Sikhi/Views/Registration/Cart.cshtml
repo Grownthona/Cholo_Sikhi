@@ -10,27 +10,130 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Cart</title>
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Style -->
+
+
+    <link rel="stylesheet" href="~/Content/css/cartstyle.css">
 </head>
 <body>
+    @{ List<int> coursetrace = new List<int>();}
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" style="color: Black;">Cholo Shiki</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                    <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Course", "Registration")">Courses</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="#">Food Catering</a>
+                                <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                                <a class="dropdown-item" href="#">Wedding &amp; Birthday</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="#">Food Catering</a>
+                                <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                                <a class="dropdown-item" href="#">Wedding &amp; Birthday</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">News</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item cta-btn">
+                            @if (Session["Useremail"] == null)
+                            {
+                                <a class="nav-link" href="@Url.Action("Login", "Registration")">Sign In</a>
+                            }
+                            else
+                            {
+                                String s = Session["Username"].ToString();
+                                String fl =" ";
+                                fl += s[0];
+                                for(int i=0;i<s.Length;i++)
+                                {
+                                    if (s[i]==' ')
+                                    {
+                                        fl += s[i];
+                                    }
+                                }
+                                <a class="nav-link" href="#">@fl</a>
+                            }
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+
+
     @{int total_price = 0;}
-    <div>
-        @if (Model.Count > 0)
-        {
-            foreach (var d in Model)
+    <div class="course-data2">
+        <div class="learn-box">
+            <div class="course-tittle">
+                <h1>Cart</h1>
+            </div>
+            @if (Model.Count > 0)
             {
-                total_price += Convert.ToInt32(d.price);
-            <p>@d.c_id</p>
-            <p>@d.user_email</p>
-         }
-        }
+                foreach (var d in Model)
+                {
+                    int h = Convert.ToInt32(d.c_id);
+                    if (coursetrace.Contains(h) == false)
+                    {
+                        coursetrace.Add(h);
+                        total_price += Convert.ToInt32(d.price);
+                        <div class="cart-courses">
+
+                            <div class="cart-container">
+
+                                <div class="course-info">
+                                    <h5>@d.coursename</h5>
+                                    <p>By Avinash Jain and one other</p>
+                                </div>
+                                <div class="removefromcart">
+                                    <a href="">Remove</a>
+                                </div>
+                                <div class="price">
+                                    <h2>$@d.price</h2>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        <form method="post" id="contactForm" name="contactForm">
+            <h2>Total Price : @total_price</h2>
+            <input type="text" class="form-control" style="display:none;" name="mail" id="eame" value="@Session["Useremail"].ToString()">
+            <button type="submit" class="button-66" role="button">Checkout</button>
+
+        </form>
+      </div>
     </div>
 
-    <p>Total Price : @total_price</p>
-    <div>
-         <form method="post" id="contactForm" name="contactForm">
-        <input type="text" class="form-control" name="mail" id="eame" value="sarah60ali@gmail.com">
-        <button input type="submit" class="button-66" role="button">Delete</button>
-    </form>
-    </div>
 </body>
 </html>

@@ -1,18 +1,312 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+﻿/*The navbar Code*/
 body {
-    padding:0;
-    margin:0;
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #fff;
+    height: 200vh;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+.linkk a {
+    color: white;
+}
 
+body:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+    body.offcanvas-menu:before {
+        opacity: 1;
+        z-index: 1002;
+        visibility: visible;
+    }
+
+p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+    a, a:hover {
+        text-decoration: none !important;
+    }
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    padding: 0px 0;
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 0px 10;
+    }
+}
+/*Main Header*/
+header .navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+    header .navbar-brand.absolute {
+        position: absolute;
+    }
+
+@media (max-width: 991.98px) {
+    header .navbar-brand.absolute {
+        position: relative;
+    }
+}
+
+header .navbar-brand span {
+    color: rgb(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+    header .navbar-brand span {
+        color: #000000;
+    }
+}
+
+header .navbar {
+    background: black !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+@media (min-width: 768px) {
+    header .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: none !important;
+        position: relative;
+    }
+}
+
+header .navbar .nav-link {
+    padding: 1.7rem 1rem;
+    outline: none !important;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8) !important;
+}
+
+@media (max-width: 1199.98px) {
+    header .navbar .nav-link {
+        padding: .5rem 0rem;
+    }
+}
+
+header .navbar .nav-link.active {
+    color: rgb(0, 0, 0) !important;
+}
+
+header .navbar .dropdown-menu {
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    -webkit-box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+    min-width: 13em;
+    margin-top: -10px;
+}
+
+    header .navbar .dropdown-menu:before {
+        bottom: 100%;
+        left: 10%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: #fff;
+        border-width: 7px;
+    }
+
+@media (max-width: 991.98px) {
+    header .navbar .dropdown-menu:before {
+        display: none;
+    }
+}
+
+header .navbar .dropdown-menu .dropdown-item:hover {
+    background: #007bff;
+    color: rgb(255, 255, 255);
+}
+
+header .navbar .dropdown-menu .dropdown-item.active {
+    background: #007bff;
+    color: rgb(245, 245, 245);
+}
+
+header .navbar .dropdown-menu a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+header .navbar .cta-btn a {
+    background: #007bff;
+    color: rgb(255, 255, 255) !important;
+    text-transform: uppercase;
+    font-size: .8rem;
+    padding: 15px 20px !important;
+    line-height: 1;
+    font-weight: bold;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+    header .navbar .cta-btn a:hover {
+        background: rgb(255, 255, 255);
+        color: #007bff !important;
+        -webkit-box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
+    }
+
+.hero {
+    position: absolute;
+    top: 50px;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.form-control {
+    border: none;
+    background: #f3f3f3;
+}
+
+    .form-control:active, .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+        background: #f3f3f3;
+    }
+
+.col-form-label {
+    color: #000;
+}
+
+.btn, .form-control, .custom-select {
+    height: 50px;
+}
+
+    .custom-select:active, .custom-select:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+    }
+
+.btn {
+    border: none;
+    border-radius: 4px !important;
+}
+
+    .btn.btn-primary {
+        background: #000;
+        color: #fff;
+        padding: 15px 20px;
+    }
+
+    .btn:hover {
+        color: #fff;
+    }
+
+    .btn:active, .btn:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+.box {
+    padding: 40px;
+    background: #fff;
+    -webkit-box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08);
+}
+
+    .box h3 {
+        font-size: 14px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+label.error {
+    font-size: 12px;
+    color: red;
+}
+
+#message {
+    resize: vertical;
+}
+
+#form-message-warning, #form-message-success {
+    display: none;
+}
+
+#form-message-warning {
+    color: #B90B0B;
+}
+
+#form-message-success {
+    color: #55A44E;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 
-.home {
-    margin-top: 5rem;
+.submitting {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+    font-weight: bold;
+    font-size: 12px;
+    color: #000;
 }
-
-button {
-    margin-bottom: 1rem;
-}
+/*The navbar Code*/
 
 .home-container {
     display: flex;
@@ -20,6 +314,7 @@ button {
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
+    margin-top: 6rem;
     padding: 4%;
 }
 
@@ -55,34 +350,40 @@ button {
     }
 }
 
-.cardd{
+.cardd {
     width: 200px;
-    height:350px;
-}
-.cardd__img{
-    width:200px;
-    height:200px;
+    height: 350px;
+    background-color:white;
 }
 
-.cardd__img img{
-    width : 100%;
+.cardd__img {
+    width: 200px;
+    height: 200px;
 }
-.check{
-    border:1px solid red;
+
+    .cardd__img img {
+        width: 100%;
+    }
+
+.check {
+    border: 1px solid red;
 }
+
 .cardd__content {
     width: 100%;
 }
+
+
 .services {
     text-align: center;
-    margin-top: 9rem;
-    margin-bottom: 6rem;
+    margin-top: 6rem;
+
 }
 
     .services h2 {
         font-family: 'Lora', serif;
         font-size: 40px;
-        margin-bottom: 8rem;
+        margin-bottom: 4rem;
     }
 
 .services-container {
@@ -112,86 +413,13 @@ button {
     .service-box img {
         width: 35%;
     }
-    @media only screen and (max-width: 600px) {
-        .services h2 {
-            font-size: 25px;
-        }
-    }
 
-
-
-.success-story {
-    background: linear-gradient(to top, rgb(83, 83, 83) 15%, rgb(0, 0, 0) 75%);
-    text-align: center;
-    color: white;
-    padding: 3rem;
-}
-
-#description {
-    font-family: 'Jost', sans-serif;
-}
-
-#successp {
-    color: blue;
-    font-size: 15px;
-    font-family: 'Jost', sans-serif;
-}
-
-.success-story h3 {
-    font-size: 40px;
-    font-family: 'Jost', sans-serif;
-}
-
-.success-story-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.success-image-box {
-    width: 800px;
-}
-
-    .success-image-box img {
-        width: 100%;
-    }
-
-.success-line-box {
-    width: 450px;
-    position: relative;
-    left: -200px;
-    text-align: end;
-}
-
-    .success-line-box p {
-        font-family: 'Jost', sans-serif;
-        line-height: 5vh;
-        font-size: 18px;
-    }
-
-@media only screen and (max-width: 1280px) {
-    .success-line-box {
-        left: 0;
+@media only screen and (max-width: 600px) {
+    .services h2 {
+        font-size: 25px;
     }
 }
 
-@media only screen and (max-width: 280px) {
-    .success-line-box {
-        left: 0;
-    }
-
-        .success-line-box p {
-            line-height: 3vh;
-            font-size: 15px;
-        }
-}
-
-
-
-
-/*Button*/
 /*Button*/
 .button-26 {
     appearance: button;
@@ -349,8 +577,6 @@ button {
     }
 }
 
-
-
 .course-data2 {
     left: 70px;
     position: relative;
@@ -422,20 +648,6 @@ span {
     color: blueviolet;
 }
 
-ul li {
-    list-style: none;
-    font-family: 'Jost', sans-serif;
-    font-weight: lighter;
-    text-align: start;
-    font-size: 15px;
-    display: flex;
-    width: 350px;
-    align-items: center;
-    height: auto;
-    letter-spacing: normal;
-    white-space: normal;
-    color: rgb(99, 99, 99);
-}
 
 .a {
     display: flex;
@@ -461,6 +673,12 @@ ul li {
 .card-body ul li a {
     color: #5a29b4;
 }
+
+.card-body{
+    padding:0;
+
+}
+
 
 .card {
     margin-bottom: 1rem;
@@ -577,11 +795,11 @@ ul li {
         background: lighten(#222, 5%);
     }
 
-.couse-container{
-    display:flex;
-    flex-wrap : wrap;
-    justify-content:center;
-    align-items:center;
+.couse-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .course {
@@ -589,6 +807,7 @@ ul li {
     float: right;
     padding: 20px;
 }
+
 .wrapper {
     width: 100%;
     max-width: 300px;
@@ -700,7 +919,7 @@ input {
     }
 
 .reviews {
-    color: #f9d71c;
+    color: black;
 }
 
 .box-top {
@@ -751,4 +970,48 @@ input {
 ::selection {
     color: #ffffff;
     background-color: #252525;
+}
+
+.lessons1 ul li {
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: lighter;
+    text-align: start;
+    font-size: 15px;
+    display: flex;
+    width: 350px;
+    align-items: center;
+    height: auto;
+    letter-spacing: normal;
+    white-space: normal;
+    color: rgb(99, 99, 99);
+}
+
+.lessons ul li {
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: lighter;
+    text-align: start;
+    font-size: 15px;
+    display: flex;
+    width: 350px;
+    align-items: center;
+    height: auto;
+    letter-spacing: normal;
+    white-space: normal;
+    color: rgb(99, 99, 99);
+}
+   ul li {
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: lighter;
+    text-align: start;
+    font-size: 15px;
+    display: flex;
+    width: 350px;
+    align-items: center;
+    height: auto;
+    letter-spacing: normal;
+    white-space: normal;
+    color: rgb(99, 99, 99);
 }

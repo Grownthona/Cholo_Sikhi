@@ -12,17 +12,12 @@ namespace Cholo_Sikhi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cours
+    public partial class Result
     {
-        public int c_id { get; set; }
-        public string tittle { get; set; }
-        public string teacher { get; set; }
-        public string c_description { get; set; }
-        public string catagory { get; set; }
-        public Nullable<int> price { get; set; }
-        public string c_img { get; set; }
-        public string Detailcode { get; set; }
-        public string learn_des { get; set; }
-        public string rating { get; set; }
+        public int result_id { get; set; }
+        public Nullable<int> c_id { get; set; }
+        public string useremail { get; set; }
+        public Nullable<int> marks { get; set; }
+        public string section_tittle { get; set; }
     }
 }

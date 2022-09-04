@@ -14,103 +14,145 @@
 </head>
 <body>
 
-    @{List<String> parts = new List<String>(); }
 
-    <div>
+    @{ int cid = 0; string sectittle = ""; }
+    @if (Session["Quizmark"].ToString() == "painai")
+    {
+        <div>
 
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                cid = Convert.ToInt32(Model[i].c_id);
+                sectittle = Model[i].section_name.ToString();
+                <div class="quiz">
+                    <div class="quiz-title">
+                        <label>@(i + 1). @Model[i].question</label>
+                    </div>
 
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <div class="quiz">
-                <div class="quiz-title">
-                    <label>@(i+1). @Model[i].question</label>
-                </div>
+                    <br />
 
-                <br />
-
-                <div class="options">
-                    <div class="form-check">
-                        <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o1')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o1">
-                        <label class="form-check-label" id="question+@i+@Model[i].o1" for="A">@Model[i].o1</label>
-                        <br>
-                        <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o2')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o2">
-                        <label class="form-check-label" id="question+@i+@Model[i].o2" for="B">@Model[i].o2</label>
-                        <br>
-                        <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o3')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o3">
-                        <label class="form-check-label" id="question+@i+@Model[i].o3" for="C">@Model[i].o3</label>
-                        <br />
-                        <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o4')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o4">
-                        <label class="form-check-label" id="question+@i+@Model[i].o4" for="D">@Model[i].o4</label>
+                    <div class="options">
+                        <div class="form-check">
+                            <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o1')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o1">
+                            <label class="form-check-label" id="question+@i+@Model[i].o1" for="A">@Model[i].o1</label>
+                            <br>
+                            <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o2')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o2">
+                            <label class="form-check-label" id="question+@i+@Model[i].o2" for="B">@Model[i].o2</label>
+                            <br>
+                            <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o3')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o3">
+                            <label class="form-check-label" id="question+@i+@Model[i].o3" for="C">@Model[i].o3</label>
+                            <br />
+                            <input class="form-check-input custom+@i" onclick="answerOnClick(@i,'@Model[i].o4')" type="radio" name="flexRadioDefault+@i" value="@Model[i].o4">
+                            <label class="form-check-label" id="question+@i+@Model[i].o4" for="D">@Model[i].o4</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        }
-      
-    </div>
-
-    <form method="post" id="contactForm" name="contactForm">
-        <input type="text" class="form-control" name="result" id="eame" placeholder="Result">
-
-        <input type="submit" />
-    </form>
-
-    <div class="form-group row">
-        <div class="col-4 offset-4">
-            <button id="completeBtn" onclick="CompleteQuiz(@Model.Count)" class="btn btn-info form-control">Complete the Quiz</button>
-        </div>
-    </div>
-
-    <div id="showresult" style="visibility:hidden">
-        <p>Your Total marks is : <span id="resultt"></span></p>
-    </div>
-
-    <div style="visibility:hidden">
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <input value="@Model[i].answer" id="correct+@i" />
-        }
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <script>
-
-        const given = [];
-        var result = 0;
-        function answerOnClick(questionIndex, answer) {
-            var redval = answer;
-            given[questionIndex] = redval;
-        }
-
-        function CompleteQuiz(count) {
-
-
-            //document.getElementById('result').innerHTML = given[0] + ' ' + document.getElementById('correct+' + 0).value;
-            //document.getElementById('result2').innerHTML = given[1] + ' ' + document.getElementById('correct+' + 1).value;
-            for (var i = 0; i < count; i++) {
-                var correctAnswer = document.getElementById('correct+' + i).value;
-                var givenAnswer = given[i];
-
-                if (correctAnswer == givenAnswer) {
-                    document.getElementById("question+" + i + '+' + givenAnswer).classList.add("btn-success");
-                    result++;
-                    // document.getElementById('result').innerHTML = givenAnswer + ' ' + correctAnswer;
-                }
-                else {
-                    document.getElementById("question+" + i + '+' + givenAnswer).classList.add("btn-danger");
-                    document.getElementById("question+" + i + '+' + correctAnswer).classList.add("btn-success");
-                }
             }
 
-            document.getElementById("showresult").style.visibility = "visible";
-            document.getElementById("resultt").innerHTML = result;
-            document.getElementById("completeBtn").style.visibility = "hidden";
-            document.querySelector('.form-control').value = result;
-            //document.getElementById('contactForm').submit();
+        </div>
 
-        }
-    </script>
-</body>
+
+        <div class="form-group row">
+            <div class="col-4 offset-5">
+                <button id="completeBtn" type="submit" onclick="CompleteQuiz(@Model.Count)" class="btn button-58 form-control">Complete the Quiz</button>
+            </div>
+        </div>
+
+        <div class="showresultbox">
+            <div class="resultmiddle">
+                <div id="showresult" style="visibility:hidden">
+                    <h4>Your Total marks is : <span id="resultt"></span></h4>
+                </div>
+                <div>
+                    <form method="post" id="contactForm" name="contactForm">
+                        <input type="text" class="form-control resultfield" style="display:none;" name="result" id="eame">
+                        <input type="text" class="form-control" style="display:none;" name="user" id="eame" value="@Session["Useremail"].ToString()">
+                        <input type="text" class="form-control" style="display:none;" name="courseid" id="eame" value="@cid">
+                        <input type="text" class="form-control" style="display:none;" name="sectionname" id="eame" value="@sectittle">
+                        <button id="button-51" class="button-51" style="visibility:hidden;" type="submit" role="button">Proceed</button>
+                     
+                    </form>
+                </div>
+                <div>
+                    <button id="button-52" class="button-52" onclick="pagereload()" style="visibility:hidden;" role="button">Retry</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="visibility:hidden">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <input value="@Model[i].answer" id="correct+@i" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="showresultbox">
+            <div class="resultmiddle">
+                <div id="showresult">
+                    <h4>Your result is : <span>@Session["Quizmark"].ToString()</span></h4>
+                </div>
+            </div>
+        </div>
+                }
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+                <script>
+
+                    const given = [];
+                    var result = 0;
+                    function answerOnClick(questionIndex, answer) {
+                        var redval = answer;
+                        given[questionIndex] = redval;
+                    }
+
+                    function CompleteQuiz(count) {
+
+
+                        //document.getElementById('result').innerHTML = given[0] + ' ' + document.getElementById('correct+' + 0).value;
+                        //document.getElementById('result2').innerHTML = given[1] + ' ' + document.getElementById('correct+' + 1).value;
+                        for (var i = 0; i < count; i++) {
+                            var correctAnswer = document.getElementById('correct+' + i).value;
+                            var givenAnswer = given[i];
+
+                            if (correctAnswer == givenAnswer) {
+                                document.getElementById("question+" + i + '+' + givenAnswer).classList.add("btn-success");
+                                result++;
+                                // document.getElementById('result').innerHTML = givenAnswer + ' ' + correctAnswer;
+                            }
+                            else {
+                                document.getElementById("question+" + i + '+' + givenAnswer).classList.add("btn-danger");
+                               // document.getElementById("question+" + i + '+' + correctAnswer).classList.add("btn-success");
+                            }
+                        }
+
+                        document.getElementById("showresult").style.visibility = "visible";
+                        document.getElementById("resultt").innerHTML = result;
+                        document.getElementById("completeBtn").style.visibility = "hidden";
+                        document.querySelector('.resultfield').value = result;
+                        document.getElementById("button-51").style.visibility = "visible";
+                        document.getElementById("button-52").style.visibility = "visible";
+                         //document.getElementById('contactForm').submit();
+
+                        /*window.addEventListener("pageshow", function (event) {
+                            var historyTraversal = event.persisted ||
+                                (typeof window.performance != "undefined" &&
+                                    window.performance.navigation.type === 2);
+                            if (historyTraversal) {
+                                // Handle page restore.
+                                window.location.reload();
+                            }
+                        });
+                       */
+
+                    }
+                    function pagereload() {
+                        location.reload();
+                    }
+                </script>
+    </body>
 </html>

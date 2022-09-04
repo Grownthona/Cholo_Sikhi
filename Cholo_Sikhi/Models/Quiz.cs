@@ -16,12 +16,12 @@ namespace Cholo_Sikhi.Models
     {
         public int q_id { get; set; }
         public Nullable<int> c_id { get; set; }
-        public Nullable<int> s_id { get; set; }
         public string question { get; set; }
         public string o1 { get; set; }
         public string o2 { get; set; }
         public string o3 { get; set; }
         public string o4 { get; set; }
         public string answer { get; set; }
+        public string section_name { get; set; }
     }
 }

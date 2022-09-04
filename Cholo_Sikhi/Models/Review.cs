@@ -20,5 +20,6 @@ namespace Cholo_Sikhi.Models
         public Nullable<int> rating { get; set; }
         public string review1 { get; set; }
         public string reviewdate { get; set; }
+        public string username { get; set; }
     }
 }

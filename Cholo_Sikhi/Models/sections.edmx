@@ -29,6 +29,7 @@
           <Property Name="c_img" Type="varchar" MaxLength="255" />
           <Property Name="Detailcode" Type="varchar" MaxLength="255" />
           <Property Name="learn_des" Type="varchar" MaxLength="7999" />
+          <Property Name="rating" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -47,13 +48,23 @@
           </Key>
           <Property Name="q_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="c_id" Type="int" />
-          <Property Name="s_id" Type="int" />
           <Property Name="question" Type="varchar" MaxLength="255" />
           <Property Name="o1" Type="varchar" MaxLength="255" />
           <Property Name="o2" Type="varchar" MaxLength="255" />
           <Property Name="o3" Type="varchar" MaxLength="255" />
           <Property Name="o4" Type="varchar" MaxLength="255" />
           <Property Name="answer" Type="varchar" MaxLength="255" />
+          <Property Name="section_name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="result_id" />
+          </Key>
+          <Property Name="result_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="useremail" Type="varchar" MaxLength="255" />
+          <Property Name="marks" Type="int" />
+          <Property Name="section_tittle" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -65,6 +76,7 @@
           <Property Name="rating" Type="int" />
           <Property Name="review" Type="varchar" MaxLength="6550" />
           <Property Name="reviewdate" Type="varchar" MaxLength="255" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -79,11 +91,11 @@
             <PropertyRef Name="subsec_id" />
           </Key>
           <Property Name="subsec_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="s_id" Type="int" />
           <Property Name="c_id" Type="int" />
           <Property Name="subsec_tittle" Type="varchar" MaxLength="255" />
           <Property Name="content_type" Type="varchar" MaxLength="255" />
           <Property Name="content_link" Type="varchar" MaxLength="255" />
+          <Property Name="section_tittle" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="userinfo">
           <Key>
@@ -99,6 +111,7 @@
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SectionContent" EntityType="Self.SectionContent" Schema="dbo" store:Type="Tables" />
@@ -108,20 +121,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="usersModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cours">
-          <Key>
-            <PropertyRef Name="c_id" />
-          </Key>
-          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="teacher" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="c_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="catagory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Int32" />
-          <Property Name="c_img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Detailcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="learn_des" Type="String" MaxLength="7999" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Section">
           <Key>
             <PropertyRef Name="s_id" />
@@ -140,26 +139,16 @@
           <Property Name="pass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="usersEntities4" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Courses" EntityType="Self.Cours" />
           <EntitySet Name="Sections" EntityType="Self.Section" />
           <EntitySet Name="userinfoes" EntityType="Self.userinfo" />
-          <EntitySet Name="SectionContents" EntityType="usersModel1.SectionContent" />
           <EntitySet Name="Carts" EntityType="usersModel1.Cart" />
           <EntitySet Name="Purchases" EntityType="usersModel1.Purchase" />
-          <EntitySet Name="Quizs" EntityType="usersModel1.Quiz" />
           <EntitySet Name="Reviews" EntityType="usersModel1.Review" />
+          <EntitySet Name="Courses" EntityType="usersModel1.Cours" />
+          <EntitySet Name="SectionContents" EntityType="usersModel1.SectionContent" />
+          <EntitySet Name="Quizs" EntityType="usersModel1.Quiz" />
+          <EntitySet Name="Results" EntityType="usersModel1.Result" />
         </EntityContainer>
-        <EntityType Name="SectionContent">
-          <Key>
-            <PropertyRef Name="subsec_id" />
-          </Key>
-          <Property Name="subsec_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="s_id" Type="Int32" />
-          <Property Name="c_id" Type="Int32" />
-          <Property Name="subsec_tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="content_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="content_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="cart_id" />
@@ -182,20 +171,6 @@
           <Property Name="purchasedate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Quiz">
-          <Key>
-            <PropertyRef Name="q_id" />
-          </Key>
-          <Property Name="q_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="c_id" Type="Int32" />
-          <Property Name="s_id" Type="Int32" />
-          <Property Name="question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="o1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="o2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="o3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="o4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Review">
           <Key>
             <PropertyRef Name="r_id" />
@@ -206,6 +181,57 @@
           <Property Name="rating" Type="Int32" />
           <Property Name="review1" Type="String" MaxLength="6550" FixedLength="false" Unicode="false" />
           <Property Name="reviewdate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="teacher" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="c_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="catagory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="c_img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Detailcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="learn_des" Type="String" MaxLength="7999" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SectionContent">
+          <Key>
+            <PropertyRef Name="subsec_id" />
+          </Key>
+          <Property Name="subsec_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="subsec_tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="content_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="content_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="section_tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="q_id" />
+          </Key>
+          <Property Name="q_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="o1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="o2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="o3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="o4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="section_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="result_id" />
+          </Key>
+          <Property Name="result_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="marks" Type="Int32" />
+          <Property Name="section_tittle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -213,21 +239,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="usersModel1StoreContainer" CdmEntityContainer="usersEntities4">
-          <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="usersModel1.Cours">
-              <MappingFragment StoreEntitySet="Courses">
-                <ScalarProperty Name="learn_des" ColumnName="learn_des" />
-                <ScalarProperty Name="Detailcode" ColumnName="Detailcode" />
-                <ScalarProperty Name="c_img" ColumnName="c_img" />
-                <ScalarProperty Name="c_id" ColumnName="c_id" />
-                <ScalarProperty Name="tittle" ColumnName="tittle" />
-                <ScalarProperty Name="teacher" ColumnName="teacher" />
-                <ScalarProperty Name="c_description" ColumnName="c_description" />
-                <ScalarProperty Name="catagory" ColumnName="catagory" />
-                <ScalarProperty Name="price" ColumnName="price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sections">
             <EntityTypeMapping TypeName="usersModel1.Section">
               <MappingFragment StoreEntitySet="Section">
@@ -244,18 +255,6 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="pass" ColumnName="pass" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SectionContents">
-            <EntityTypeMapping TypeName="usersModel1.SectionContent">
-              <MappingFragment StoreEntitySet="SectionContent">
-                <ScalarProperty Name="content_link" ColumnName="content_link" />
-                <ScalarProperty Name="content_type" ColumnName="content_type" />
-                <ScalarProperty Name="subsec_tittle" ColumnName="subsec_tittle" />
-                <ScalarProperty Name="c_id" ColumnName="c_id" />
-                <ScalarProperty Name="s_id" ColumnName="s_id" />
-                <ScalarProperty Name="subsec_id" ColumnName="subsec_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -283,30 +282,70 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Quizs">
-            <EntityTypeMapping TypeName="usersModel1.Quiz">
-              <MappingFragment StoreEntitySet="Quiz">
-                <ScalarProperty Name="answer" ColumnName="answer" />
-                <ScalarProperty Name="o4" ColumnName="o4" />
-                <ScalarProperty Name="o3" ColumnName="o3" />
-                <ScalarProperty Name="o2" ColumnName="o2" />
-                <ScalarProperty Name="o1" ColumnName="o1" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="s_id" ColumnName="s_id" />
-                <ScalarProperty Name="c_id" ColumnName="c_id" />
-                <ScalarProperty Name="q_id" ColumnName="q_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="usersModel1.Review">
               <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="reviewdate" ColumnName="reviewdate" />
                 <ScalarProperty Name="review1" ColumnName="review" />
                 <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
                 <ScalarProperty Name="r_id" ColumnName="r_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="usersModel1.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="learn_des" ColumnName="learn_des" />
+                <ScalarProperty Name="Detailcode" ColumnName="Detailcode" />
+                <ScalarProperty Name="c_img" ColumnName="c_img" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="catagory" ColumnName="catagory" />
+                <ScalarProperty Name="c_description" ColumnName="c_description" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
+                <ScalarProperty Name="tittle" ColumnName="tittle" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionContents">
+            <EntityTypeMapping TypeName="usersModel1.SectionContent">
+              <MappingFragment StoreEntitySet="SectionContent">
+                <ScalarProperty Name="section_tittle" ColumnName="section_tittle" />
+                <ScalarProperty Name="content_link" ColumnName="content_link" />
+                <ScalarProperty Name="content_type" ColumnName="content_type" />
+                <ScalarProperty Name="subsec_tittle" ColumnName="subsec_tittle" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="subsec_id" ColumnName="subsec_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quizs">
+            <EntityTypeMapping TypeName="usersModel1.Quiz">
+              <MappingFragment StoreEntitySet="Quiz">
+                <ScalarProperty Name="section_name" ColumnName="section_name" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="o4" ColumnName="o4" />
+                <ScalarProperty Name="o3" ColumnName="o3" />
+                <ScalarProperty Name="o2" ColumnName="o2" />
+                <ScalarProperty Name="o1" ColumnName="o1" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="q_id" ColumnName="q_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="usersModel1.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="section_tittle" ColumnName="section_tittle" />
+                <ScalarProperty Name="marks" ColumnName="marks" />
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="result_id" ColumnName="result_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

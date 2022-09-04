@@ -1,0 +1,431 @@
+﻿@font-face {
+    font-family: 'Begnard';
+    src: url(./font/BagnardSans.otf);
+}
+
+body {
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #fff;
+    height: 200vh;
+}
+
+    body:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+    }
+
+    body.offcanvas-menu:before {
+        opacity: 1;
+        z-index: 1002;
+        visibility: visible;
+    }
+
+p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+    a, a:hover {
+        text-decoration: none !important;
+    }
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    padding: 0px 0;
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 0px 10;
+    }
+}
+/*Main Header*/
+header .navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+    header .navbar-brand.absolute {
+        position: absolute;
+    }
+
+@media (max-width: 991.98px) {
+    header .navbar-brand.absolute {
+        position: relative;
+    }
+}
+
+header .navbar-brand span {
+    color: rgb(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+    header .navbar-brand span {
+        color: #000000;
+    }
+}
+
+header .navbar {
+    background: black !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+@media (min-width: 768px) {
+    header .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: none !important;
+        position: relative;
+    }
+}
+
+header .navbar .nav-link {
+    padding: 1.7rem 1rem;
+    outline: none !important;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8) !important;
+}
+
+@media (max-width: 1199.98px) {
+    header .navbar .nav-link {
+        padding: .5rem 0rem;
+    }
+}
+
+header .navbar .nav-link.active {
+    color: rgb(0, 0, 0) !important;
+}
+
+header .navbar .dropdown-menu {
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    -webkit-box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+    min-width: 13em;
+    margin-top: -10px;
+}
+
+    header .navbar .dropdown-menu:before {
+        bottom: 100%;
+        left: 10%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: #fff;
+        border-width: 7px;
+    }
+
+@media (max-width: 991.98px) {
+    header .navbar .dropdown-menu:before {
+        display: none;
+    }
+}
+
+header .navbar .dropdown-menu .dropdown-item:hover {
+    background: #007bff;
+    color: rgb(255, 255, 255);
+}
+
+header .navbar .dropdown-menu .dropdown-item.active {
+    background: #007bff;
+    color: rgb(245, 245, 245);
+}
+
+header .navbar .dropdown-menu a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+header .navbar .cta-btn a {
+    background: #007bff;
+    color: rgb(255, 255, 255) !important;
+    text-transform: uppercase;
+    font-size: .8rem;
+    padding: 15px 20px !important;
+    line-height: 1;
+    font-weight: bold;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+    header .navbar .cta-btn a:hover {
+        background: rgb(255, 255, 255);
+        color: #007bff !important;
+        -webkit-box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
+    }
+
+.content {
+    padding: 7rem 0;
+}
+
+.hero {
+    position: absolute;
+    top: 50px;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.form-control {
+    border: none;
+    background: #f3f3f3;
+}
+
+    .form-control:active, .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+        background: #f3f3f3;
+    }
+
+.col-form-label {
+    color: #000;
+}
+
+.btn, .form-control, .custom-select {
+    height: 50px;
+}
+
+    .custom-select:active, .custom-select:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+    }
+
+.btn {
+    border: none;
+    border-radius: 4px !important;
+}
+
+    .btn.btn-primary {
+        background: #000;
+        color: #fff;
+        padding: 15px 20px;
+    }
+
+    .btn:hover {
+        color: #fff;
+    }
+
+    .btn:active, .btn:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+.box {
+    padding: 40px;
+    background: #fff;
+    -webkit-box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08);
+}
+
+    .box h3 {
+        font-size: 14px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+label.error {
+    font-size: 12px;
+    color: red;
+}
+
+#message {
+    resize: vertical;
+}
+
+#form-message-warning, #form-message-success {
+    display: none;
+}
+
+#form-message-warning {
+    color: #B90B0B;
+}
+
+#form-message-success {
+    color: #55A44E;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.submitting {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+    font-weight: bold;
+    font-size: 12px;
+    color: #000;
+}
+/*The navbar Code*/
+
+
+.course-data2 {
+    left: 70px;
+    position: relative;
+    top: 100px;
+}
+
+.learn-box {
+    width: 900px;
+    padding: 20px;
+}
+.course-tittle {
+    margin-bottom: 2rem;
+}
+
+    .course-tittle h1 {
+        font-size: 35px;
+        font-weight: bold;
+        font-family: 'Begnard';
+        margin-bottom: 1rem;
+    }
+
+.cart-courses {
+    width:100%;
+    height: 100px;
+    border: 1px solid gray;
+    margin-bottom:2rem;
+}
+
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cart-imgbox {
+    width: 80px;
+}
+
+    .cart-imgbox img {
+        width: 100%;
+    }
+
+.course-info{
+    width:400px;
+}
+
+.course-info p {
+    line-height: 2vh;
+    font-size: 12px;
+    color: gray;
+}
+
+.course-info h5 {
+    line-height: 3vh;
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom:1rem;
+}
+
+.rating p {
+    line-height: 3vh;
+    margin-bottom:7px;
+}
+
+.removefromcart {
+    padding: 12px 12px;
+    background-color: black;
+}
+
+    .removefromcart a {
+        font-size: 15px;
+        color: white;
+        text-decoration: none;
+    }
+
+.price h2 {
+    color: rgb(133, 35, 133);
+}
+
+.button-66 {
+    background-color: #6058db;
+    border-radius: 4px;
+    border: 0;
+    box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inherit;
+    font-family: "Space Grotesk",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    min-height: 56px;
+    width: 100%;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+    .button-66:hover {
+        background-color: #065dd8;
+        transform: translateY(-2px);
+    }
+
+@media (min-width: 768px) {
+    .button-66 {
+        padding: 16px 44px;
+        min-width: 150px;
+    }
+}
+
+/*CSS */

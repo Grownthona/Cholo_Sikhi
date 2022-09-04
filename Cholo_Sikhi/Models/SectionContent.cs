@@ -15,10 +15,10 @@ namespace Cholo_Sikhi.Models
     public partial class SectionContent
     {
         public int subsec_id { get; set; }
-        public Nullable<int> s_id { get; set; }
         public Nullable<int> c_id { get; set; }
         public string subsec_tittle { get; set; }
         public string content_type { get; set; }
         public string content_link { get; set; }
+        public string section_tittle { get; set; }
     }
 }

@@ -5,14 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6c4da9aa3f8545dc8d85d1443f7cc88a" Name="Diagram1">
-        <EntityTypeShape EntityType="usersModel1.Cours" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="usersModel1.Section" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="usersModel1.userinfo" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="usersModel1.SectionContent" Width="1.5" PointX="2.75" PointY="2.625" />
         <EntityTypeShape EntityType="usersModel1.Cart" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="usersModel1.Purchase" Width="1.5" PointX="4.75" PointY="3.25" />
-        <EntityTypeShape EntityType="usersModel1.Quiz" Width="1.5" PointX="6.75" PointY="0.875" />
-        <EntityTypeShape EntityType="usersModel1.Review" Width="1.5" PointX="6.75" PointY="3.875" />
+        <EntityTypeShape EntityType="usersModel1.Review" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="usersModel1.Cours" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="usersModel1.SectionContent" Width="1.5" PointX="2.75" PointY="2.75" />
+        <EntityTypeShape EntityType="usersModel1.Quiz" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="usersModel1.Result" Width="1.5" PointX="8.5" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
