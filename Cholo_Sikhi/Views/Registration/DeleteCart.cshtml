@@ -61,6 +61,7 @@
                             <a class="nav-link" href="#">News</a>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item cta-btn">
                             @if (Session["Useremail"] == null)
@@ -82,16 +83,6 @@
                                 <a class="nav-link" href="#">@fl</a>
                             }
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ml-3">
-                        @if (Session["Useremail"] != null)
-                        {
-                            <li class="nav-item cta-btn">
-
-                                <a class="nav-link" href="@Url.Action("endsession", "Registration")">Log Out</a>
-
-                            </li>
-                        }
                     </ul>
 
                 </div>

@@ -272,9 +272,10 @@
 
 
                                 <div class="form-outline w-100 mb-4">
-                                    <input type="text" class="form-control ratingbox" name="rating" id="eame" value="">
-                                    <textarea class="form-control" id="form4Example3" name="review" rows="4"></textarea>
+                                    <input type="text" class="form-control ratingbox" style="display:none;" name="rating" id="eame" value="">
+                                    <input type="text" class="form-control revboxtext" id="form4Example3" name="revieww" value="">
                                 </div>
+                                <input type="text" class="form-control revbox" style="display:none;" id="form4Example3" name="revieww" value="">
                                 <button onclick="Removecart()" type="submit" class="button-26" role="button">Submit</button>
 
                             </div>
@@ -426,6 +427,7 @@
             }
 
             function Removecart() {
+                document.querySelector('.revbox').value = document.querySelector('.revboxtext').innerHTML;
                 document.querySelector('.cartadd').value = "No";
             }
             function decidecart() {

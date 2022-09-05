@@ -577,6 +577,8 @@
     <Content Include="Views\Registration\CoursebyCatagory.cshtml" />
     <Content Include="Views\Registration\Cart.cshtml" />
     <Content Include="Views\Registration\Quizport.cshtml" />
+    <Content Include="Views\Registration\DeleteCart.cshtml" />
+    <Content Include="Views\Registration\endsession.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

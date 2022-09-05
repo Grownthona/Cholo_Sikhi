@@ -15,12 +15,15 @@ namespace Cholo_Sikhi.Controllers
 
         public ActionResult Login()
         {
+          
             if (Session["Useremail"] ==null)
             {
+
                 return View();
             }
             else
             {
+               
                 return RedirectToAction("DashBoard");
             }
         }
@@ -123,7 +126,7 @@ namespace Cholo_Sikhi.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CourseDetails(int prc,int courseid,String rating,String review,String addcart,String coursename)
+        public ActionResult CourseDetails(int prc,int courseid,String rating,String revieww, String addcart,String coursename)
         {
 
            
@@ -158,7 +161,7 @@ namespace Cholo_Sikhi.Controllers
                  Review rev = new Review();
                  rev.c_id = courseid;
                  rev.reviewdate = today.ToString();
-                 rev.review1 = review;
+                 rev.review1 = revieww;
                  rev.rating = Convert.ToInt32(rating);
                  rev.email = Session["Useremail"].ToString();
                  rev.username = Session["Username"].ToString();
@@ -209,7 +212,60 @@ namespace Cholo_Sikhi.Controllers
             }
         }
 
-        public ActionResult Cart()
+        public ActionResult DeleteCart(int id)
+        {
+            //List<Cart> cartinfo = db.Carts.ToList();
+            String user = Session["Useremail"].ToString();
+            var c = db.Carts.Where(x => x.c_id == id && x.user_email==user).FirstOrDefault();
+            db.Carts.Remove(c);
+            db.SaveChanges();
+           
+            List<Cart> cart = db.Carts.Where(x => x.user_email == user).ToList();
+            return View(cart);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCart(String mail)
+        {
+        
+                try
+                {
+                    List<Cart> cartt = db.Carts.Where(x => x.user_email == mail).ToList();
+
+                    DateTime today = DateTime.Now;
+                    Purchase p = new Purchase();
+                    foreach (var pur in cartt)
+                    {
+                        p.price = pur.price;
+                        p.coursename = pur.coursename;
+                        p.c_id = pur.c_id;
+                        p.purchasedate = today.ToString();
+                        p.useremail = pur.user_email;
+                        db.Purchases.Add(p);
+                        db.SaveChanges();
+
+                    }
+                    // Try to remove it
+                    Session["CartRequest"] = null;
+                    Session["CartCid"] = null;
+                    Session["AddtoCart"] = null;
+                    db.Carts.RemoveRange(cartt);
+
+                    // Save the changes
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    //Log the error add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+
+                List<Cart> cartinfo = db.Carts.ToList();
+                String user = Session["Useremail"].ToString();
+                List<Cart> cart = db.Carts.Where(x => x.user_email == user).ToList();
+                return View(cart);
+            }
+            public ActionResult Cart()
         {
             List<Cart> cartinfo = db.Carts.ToList();
             String user = Session["Useremail"].ToString();
@@ -218,11 +274,9 @@ namespace Cholo_Sikhi.Controllers
         }
         [HttpPost]
         public ActionResult Cart(String mail)
-        {
-            
+        { 
             try
             {
-                
                 List<Cart> cartt = db.Carts.Where(x => x.user_email == mail).ToList();
 
                 DateTime today = DateTime.Now;
@@ -369,7 +423,8 @@ namespace Cholo_Sikhi.Controllers
                     {
                        Session["Useremail"] = obj.email.ToString();
                        Session["Username"] = obj.name.ToString();
-                       if(Session["CartRequest"]!=null)
+                      TempData["LoginSuccess"] = "Login Successful";
+                    if (Session["CartRequest"]!=null)
                        {
                           return RedirectToAction("CourseDetails", new {id = Convert.ToInt32(Session["CartCid"]) });
                        }
@@ -381,14 +436,52 @@ namespace Cholo_Sikhi.Controllers
                     }
                     else
                     {
-                       TempData["Message"] = "Login Unsuccesful.";
-                       return View();
+                    TempData["Loginerror"] = "Login Unsuccessful";
+                    return View();
                     }
             }
            
                 return View();
         }
        
+        public ActionResult endsession()
+        {
+            Session["Useremail"] = null;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult endsession(userinfo s)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                var obj = db.userinfoes.Where(a => a.email.Equals(s.email) && a.pass.Equals(s.pass)).FirstOrDefault();
+                if (obj != null)
+                {
+                    Session["Useremail"] = obj.email.ToString();
+                    Session["Username"] = obj.name.ToString();
+                    TempData["LoginSuccess"] = "Login Successful";
+                    if (Session["CartRequest"] != null)
+                    {
+                        return RedirectToAction("CourseDetails", new { id = Convert.ToInt32(Session["CartCid"]) });
+                    }
+                    else
+                    {
+                        return RedirectToAction("DashBoard");
+                    }
+
+                }
+                else
+                {
+                    TempData["Loginerror"] = "Login Unsuccessful";
+                    return View();
+                }
+            }
+
+            return View();
+        }
 
         public ActionResult DashBoard()
         {
@@ -419,12 +512,12 @@ namespace Cholo_Sikhi.Controllers
                 {
                     db.userinfoes.Add(s);
                     db.SaveChanges();
-                    TempData["Message"] = "User registed Succesfully.";
+                    TempData["Success"] = "User registed Succesfully.";
                     return View();
                 }
                 else
                 {
-                    TempData["Message"] = "This login failed. Please enter the correct email or password.";
+                    TempData["Message"] = "This SignUp failed.";
                     return View();
                 }
             }
