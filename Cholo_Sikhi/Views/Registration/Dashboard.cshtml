@@ -32,7 +32,7 @@
     <!-- Style -->
 
 
-    <link rel="stylesheet" href="~/Content/css/homee.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
 
     <title>Website Menu #8</title>
 </head>
@@ -140,12 +140,67 @@
         </div>
     </div>
 
-    
-    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Content/js/popper.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <script src="~/Content/js/jquery.sticky.js"></script>
-    <script src="~/Content/js/jquery.validate.min.js"></script>
-    <script src="~/Content/js/main.js"></script>
+    <div class="dashboardcatagory">
+        <h2>Top Catagories</h2>
+        <div class="dcatagory-container">
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Design"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-design-v2.jpg" alt="">
+                    </div>
+                    <h5>Design</h5>
+                </a>
+            </div>
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Development"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-development-v2.jpg" alt="">
+                    </div>
+                    <h5>Development</h5>
+                </a>
+            </div>
+
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Marketing"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-marketing-v2.jpg" alt="">
+                    </div>
+                    <h5>Marketing</h5>
+                </a>
+            </div>
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Programming"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-it-and-software-v2.jpg" alt="">
+                    </div>
+                    <h5>Programming</h5>
+                </a>
+            </div>
+
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Design"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-personal-development-v2.jpg" alt="">
+                    </div>
+                    <h5>Personal Development</h5>
+                </a>
+            </div>
+            <div class="catbox">
+                <a class="nav-link" href="@Url.Action("CoursebyCatagory", "Registration", new {catagoryname="Business"})" style="color:black;">
+                    <div class="catimg-box">
+                        <img src="https://s.udemycdn.com/home/top-categories/lohp-category-business-v2.jpg" alt="">
+                    </div>
+                    <h5>Business</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+
+            <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+            <script src="~/Content/js/popper.min.js"></script>
+            <script src="~/Content/js/bootstrap.min.js"></script>
+            <script src="~/Content/js/jquery.sticky.js"></script>
+            <script src="~/Content/js/jquery.validate.min.js"></script>
+            <script src="~/Content/js/main.js"></script>
 </body>
 </html>

@@ -72,6 +72,8 @@ namespace Cholo_Sikhi.Controllers
             List<Review> reviews = db.Reviews.ToList();
             List<Purchase> pur = db.Purchases.ToList();
 
+            Session["Enrollment"] = null;
+
             if (Session["Useremail"] != null)
             {
                 foreach (var v in pur)
@@ -234,9 +236,12 @@ namespace Cholo_Sikhi.Controllers
                     p.useremail = pur.user_email;
                     db.Purchases.Add(p);
                     db.SaveChanges();
+
                 }
                 // Try to remove it
-              
+                Session["CartRequest"] = null;
+                Session["CartCid"] = null;
+                Session["AddtoCart"] = null;
                 db.Carts.RemoveRange(cartt);
 
                 // Save the changes
@@ -254,50 +259,87 @@ namespace Cholo_Sikhi.Controllers
             return View(cart);
         }
 
-        public ActionResult CoursebyCatagorys()
+        public ActionResult CoursebyCatagory(String catagoryname)
         {
-           return View();
+            
+                List<Cours> course = db.Courses.Where(x => x.catagory == catagoryname).ToList();
+                return View(course);
+            
+        }
+
+        [HttpPost]
+        public ActionResult CoursebyCatagory(String sortOrder,String sss)
+        {
+                var students = from s in db.Courses
+                               select s;
+                switch (sortOrder)
+                {
+                    case "Programming":
+                        students = students.Where(s => s.catagory.Equals("Programming"));
+                        break;
+                    case "Design":
+                        students = students.Where(s => s.catagory.Equals("Design"));
+                        break;
+                    case "price_desc":
+                        students = students.OrderByDescending(s => s.price);
+                        break;
+                    case "price":
+                        students = students.OrderBy(s => s.price);
+                        break;
+                    case "All":
+                        students = students.OrderBy(s => s.c_id);
+                        break;
+                }
+                return View(students.ToList());
         }
 
         public ActionResult Quizport(int id , String secname)
         {
 
-            List<Quiz> quizinfo = db.Quizs.Where(x => x.c_id == id && x.section_name==secname).ToList();
-            string s = Session["Useremail"].ToString();
-            List<Result> quizcheck = db.Results.ToList();
-
-            int quizmark = 0;
-
-            Session["Quizmark"] = "painai";
-            foreach (var c in quizcheck)
+            if (Session["Useremail"] != null)
             {
-                int cid = Convert.ToInt32(c.c_id);
-                String sectionname = c.section_tittle.ToString();
-                String quizuser = c.useremail.ToString();
-                quizmark = Convert.ToInt32(c.marks);
-                if (cid==id)
+                List<Quiz> quizinfo = db.Quizs.Where(x => x.c_id == id && x.section_name == secname).ToList();
+                string s = Session["Useremail"].ToString();
+                List<Result> quizcheck = db.Results.ToList();
+
+                int quizmark = 0;
+
+                Session["Quizmark"] = "painai";
+                foreach (var c in quizcheck)
                 {
-                    if(sectionname.Equals(secname))
-                    { 
-                        if(s.Equals(quizuser))
+                    int cid = Convert.ToInt32(c.c_id);
+                    String sectionname = c.section_tittle.ToString();
+                    String quizuser = c.useremail.ToString();
+                    quizmark = Convert.ToInt32(c.marks);
+                    if (cid == id)
+                    {
+                        if (sectionname.Equals(secname))
                         {
-                            Session["Quizmark"] = Session["Useremail"];
-                            break;
+                            if (s.Equals(quizuser))
+                            {
+                                Session["Quizmark"] = Session["Useremail"];
+                                break;
+                            }
                         }
+                        //return Content("paisi");
                     }
-                    //return Content("paisi");
                 }
-            }
-            //return Content(Session["Quizmark"].ToString());
-            if(Session["Quizmark"] == Session["Useremail"])
-            {
-                Session["Quizmark"] = quizmark;
-                return View(quizinfo);
+                //return Content(Session["Quizmark"].ToString());
+                if (Session["Quizmark"] == Session["Useremail"])
+                {
+                    Session["Quizmark"] = quizmark;
+                    return View(quizinfo);
+                }
+                else
+                {
+                    return View(quizinfo);
+                }
             }
             else
             {
-                return View(quizinfo);
+                return RedirectToAction("Login");
             }
+            
         }
 
         [HttpPost]

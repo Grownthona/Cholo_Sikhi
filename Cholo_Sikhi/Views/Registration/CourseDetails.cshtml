@@ -99,16 +99,23 @@
             <input type="text" class="form-control" style="display:none;" name="coursename" id="eame" value="@course_tittle">
             <input type="text" class="form-control" style="display:none;" name="courseid" id="eame" value=@courseid>
 
-            @if (Session["AddtoCart"] != null || Session["Enrollment"]!=null)
+            @if (Session["AddtoCart"] != null)
             {
-                if (Session["AddtoCart"] == Session["Useremail"] || Session["Enrollment"] == Session["Useremail"])
+                if (Session["AddtoCart"] == Session["Useremail"])
                 {
-                <button type="submit" class="button-66" role="button"><span id="linkk">@Html.ActionLink("Go to Cart", "Cart", "Registration", new { @style = "color:white;" })</span></button>
+                    <button type="submit" class="button-66" role="button"><span id="linkk">@Html.ActionLink("Go to Cart", "Cart", "Registration", new { @style = "color:white;" })</span></button>
+                }
+            }
+            else if (Session["Enrollment"] != null)
+            {
+                if (Session["Enrollment"] == Session["Useremail"])
+                {
+                     <button type="submit" class="button-66" role="button">Purchased</button>
                 }
             }
             else
             {
-            <button onclick="decidecart()" type="submit" class="button-66" role="button">Buy Now</button>
+                <button onclick="decidecart()" type="submit" class="button-66" role="button">Buy Now</button>
             }
 
 
@@ -176,7 +183,7 @@
 
                                 thirdlist.Add(ii);
                                 <div class="card">
-                                    <div class="card-header collapsible" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="card-header collapsible" id="headingOne" style="background-color:white;padding:18px;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <h5 class="mb-0">
                                             <h5>
                                                 @s.sectiondetails.tittle
@@ -206,27 +213,28 @@
                                                         else
                                                         {
                                                             <li>
-                                                                <span><i class="fa fa-play-circle" style="font-size:16px;color:rgb(0, 0, 0)"></i></span>@Html.ActionLink(tittle, "Quizport", new { id = courseid, secname = sectionname })</li>
-                                                            }
+                                                                <span><i class="fa fa-file-text-o" style="font-size:16px;color:rgb(0, 0, 0)"></i></span>@Html.ActionLink(tittle, "Quizport", new { id = courseid, secname = sectionname })
+                                                            </li>
                                                         }
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="@sModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLongTitle">@tittle </h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <iframe width="100%" height="335" class="yt_player_iframe" src=@videourl title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                    </div>
+                                                    }
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="@sModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">@tittle </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <iframe width="100%" height="335" class="yt_player_iframe" src=@videourl title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!--MODAL PART-->
-                                                    }
+                                                    </div>
+                                                    <!--MODAL PART-->
+                                                }
                                             </ul>
                                         </div>
                                     </div>
@@ -264,84 +272,84 @@
 
 
                                 <div class="form-outline w-100 mb-4">
-                                    <input type="text" class="form-control ratingbox" name="rating" id="eame" value="0">
+                                    <input type="text" class="form-control ratingbox" name="rating" id="eame" value="">
                                     <textarea class="form-control" id="form4Example3" name="review" rows="4"></textarea>
                                 </div>
                                 <button onclick="Removecart()" type="submit" class="button-26" role="button">Submit</button>
-                                
+
                             </div>
 
                         </div>
-                        }
                     }
                 }
-            </form>
+            }
+        </form>
 
         @if (Session["ReviewActive"].ToString() == "Yes")
         {
-        <div class="course-data2">
-            <div class="learn-box">
-                <div id="testimonials">
+            <div class="course-data2">
+                <div class="learn-box">
+                    <div id="testimonials">
 
-                    <div class="testimonial-box-container">
-                        @foreach (var v in Model)
-                        {
-                            int ratingcount = Convert.ToInt32(v.reviewdetails.rating);
-                            int checkcourse = Convert.ToInt32(v.reviewdetails.c_id);
-                            if (reviewchck.Contains(Convert.ToInt32(v.reviewdetails.r_id)) == false && checkcourse == courseid)
+                        <div class="testimonial-box-container">
+                            @foreach (var v in Model)
                             {
-                                reviewchck.Add(Convert.ToInt32(v.reviewdetails.r_id));
-                                <div class="testimonial-box">
+                                int ratingcount = Convert.ToInt32(v.reviewdetails.rating);
+                                int checkcourse = Convert.ToInt32(v.reviewdetails.c_id);
+                                if (reviewchck.Contains(Convert.ToInt32(v.reviewdetails.r_id)) == false && checkcourse == courseid)
+                                {
+                                    reviewchck.Add(Convert.ToInt32(v.reviewdetails.r_id));
+                                    <div class="testimonial-box">
 
-                                    <div class="box-top">
+                                        <div class="box-top">
 
-                                        <div class="profile">
+                                            <div class="profile">
 
-                                            <div class="profile-img">
-                                                <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" alt="">
+                                                <div class="profile-img">
+                                                    <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" alt="">
+                                                </div>
+                                                <div class="name-user">
+                                                    <strong>@v.reviewdetails.username</strong>
+                                                </div>
+                                                <div class="name-user">
+                                                    <span>@v.reviewdetails.reviewdate</span>
+                                                </div>
                                             </div>
-                                            <div class="name-user">
-                                                <strong>@v.reviewdetails.username</strong>
-                                            </div>
-                                            <div class="name-user">
-                                                <span>@v.reviewdetails.reviewdate</span>
+
+                                            <div class="reviews">
+                                                @for (int i = 0; i < ratingcount; i++)
+                                                {<i class="fa fa-star checked" style="font-size:16px;"></i>}
+                                                @for (int i = 0; i < 5 - ratingcount; i++)
+                                                {<i class="fa fa-star" style="font-size:16px;"></i>}
                                             </div>
                                         </div>
-
-                                        <div class="reviews">
-                                            @for (int i = 0; i < ratingcount; i++)
-                                            {<i class="fa fa-star checked" style="font-size:16px;"></i>}
-                                            @for (int i = 0; i < 5 - ratingcount; i++)
-                                            {<i class="fa fa-star" style="font-size:16px;"></i>}
+                                        <div class="client-comment">
+                                            <p>@v.reviewdetails.review1</p>
                                         </div>
                                     </div>
-                                    <div class="client-comment">
-                                        <p>@v.reviewdetails.review1</p>
-                                    </div>
-                                </div>
+                                }
                             }
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         }
 
+        <!--
+            <div class="course-data2">
+                <div class="learn-box">
+                    <div class="lessons">
+                        <h2>User Rating</h2>
+                        <span class="heading">User Rating</span>
+                        <span class="fa fa-star checked"></span>
 
-        <div class="course-data2">
-            <div class="learn-box">
-                <div class="lessons">
-                    <h2>User Rating</h2>
-                    <span class="heading">User Rating</span>
-                    <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <p>4.1 average based on 254 reviews.</p>
+                        <hr style="border:3px solid #f1f1f1">
 
-                    <span class="fa fa-star"></span>
-                    <p>4.1 average based on 254 reviews.</p>
-                    <hr style="border:3px solid #f1f1f1">
-
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>-->
 
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -413,7 +421,7 @@
 
                 let rating = document.querySelector(".rating");
                 let stars = document.querySelectorAll(".star");
-               // document.getElementById('resultt').innerHTML = v;
+                // document.getElementById('resultt').innerHTML = v;
                 //document.querySelector('.ratingbox').value = v;
             }
 

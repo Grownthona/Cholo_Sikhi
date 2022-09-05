@@ -201,6 +201,7 @@ header .navbar .cta-btn a {
         box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
     }
 
+
 .hero {
     position: absolute;
     top: 50px;
@@ -674,12 +675,6 @@ span {
     color: #5a29b4;
 }
 
-.card-body{
-    padding:0;
-
-}
-
-
 .card {
     margin-bottom: 1rem;
 }
@@ -1001,7 +996,8 @@ input {
     white-space: normal;
     color: rgb(99, 99, 99);
 }
-   ul li {
+
+.card-body ul li {
     list-style: none;
     font-family: 'Jost', sans-serif;
     font-weight: lighter;

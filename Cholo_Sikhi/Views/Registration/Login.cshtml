@@ -28,9 +28,6 @@
     <title>Website Menu #8</title>
 </head>
 <body>
-
-   
-
     <header role="banner">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
@@ -76,11 +73,11 @@
                             else
                             {
                                 String s = Session["Username"].ToString();
-                                String fl =" ";
+                                String fl = " ";
                                 fl += s[0];
-                                for(int i=0;i<s.Length;i++)
+                                for (int i = 0; i < s.Length; i++)
                                 {
-                                    if (s[i]==' ')
+                                    if (s[i] == ' ')
                                     {
                                         fl += s[i];
                                     }
@@ -88,7 +85,9 @@
                                 <a class="nav-link" href="#">@fl</a>
                             }
                         </li>
+
                     </ul>
+                   
                 </div>
             </div>
         </nav>
