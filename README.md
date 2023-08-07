@@ -3,7 +3,10 @@
 
 ![screencapture-localhost-44377-Registration-Course-2023-08-07-05_41_20](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/5c0bbd92-1d46-4e19-8ee9-674ff99f7a2c)
 
-![screencapture-localhost-44377-Registration-CourseDetails-1-2023-08-07-05_43_00](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/9be9988d-28fc-403b-8e2f-beb418c34e4e)
+![CourseDetails - Google Chrome 9_5_2022 11_12_03 AM (2)](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/6462d690-4cf2-4cbb-a61a-1021cdaa79f7)
+![CourseDetails - Google Chrome 9_5_2022 11_14_50 AM (2)](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/808977be-268d-4617-a48b-949875b84bd7)
+
+![CourseDetails - Google Chrome 9_5_2022 11_09_51 AM (2)](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/68a4ca3c-5b1a-4685-96fe-69894bff8005)
 
 ![screencapture-localhost-44377-Registration-Quizport-1-2023-08-07-05_56_00](https://github.com/Grownthona/Cholo_Sikhi/assets/78976756/e7c4a89c-3877-4d50-916c-86476e88b0db)
 
